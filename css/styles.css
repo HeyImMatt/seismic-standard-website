@@ -43,14 +43,14 @@ nav {
 	font-family: 'Chinese Sthupo', sans-serif;
 	font-size: 1.5rem;
 	font-weight: 400;
-	color: #d94e2a;
+	color: #ffb319;
 	text-decoration: none;
 	transition: all 0.3s ease;
 	letter-spacing: 0.02em;
 }
 
 .navbar-brand:hover {
-	color: #ffb319;
+	color: #d94e2a;
 	transform: scale(1.05);
 }
 
