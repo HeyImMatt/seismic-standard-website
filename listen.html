@@ -59,10 +59,10 @@
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-8 items-center" style="margin-left: 123px;">
-                    <a href="bio.html" class="nav-link">Bio</a>
-                    <a href="listen.html" class="nav-link active">Listen</a>
+                    <!-- <a href="bio.html" class="nav-link">Bio</a> -->
                     <a href="watch.html" class="nav-link">Watch</a>
-                    <a href="shows.html" class="nav-link">Shows</a>
+                    <a href="listen.html" class="nav-link active">Listen</a>
+                    <!-- <a href="shows.html" class="nav-link">Shows</a> -->
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
 
@@ -84,10 +84,10 @@
         <div id="mobile-menu"
             class="hidden md:hidden backdrop-blur-lg bg-brand-brown/95 border-t border-brand-orange/30">
             <div class="px-4 py-4 space-y-3">
-                <a href="bio.html" class="mobile-nav-link">Bio</a>
-                <a href="listen.html" class="mobile-nav-link active">Listen</a>
+                <!-- <a href="bio.html" class="mobile-nav-link">Bio</a> -->
                 <a href="watch.html" class="mobile-nav-link">Watch</a>
-                <a href="shows.html" class="mobile-nav-link">Shows</a>
+                <a href="listen.html" class="mobile-nav-link active">Listen</a>
+                <!-- <a href="shows.html" class="mobile-nav-link">Shows</a> -->
                 <a href="contact.html" class="mobile-nav-link">Contact</a>
             </div>
         </div>
@@ -96,147 +96,65 @@
     <!-- Main Content -->
     <section class="py-20 pt-28 bg-brand-charcoal">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto">
-                <!-- Bandcamp Album Embed 1 -->
-                <div class="mb-16 fade-in-up delay-100">
-                    <div class="bg-white rounded-lg shadow-xl p-8 border-l-4 border-brand-orange">
-                        <h2 class="text-3xl font-bold text-brand-orange mb-4">Latest Release</h2>
-                        <p class="text-brand-warm-gray mb-6">
-                            Our newest album capturing the essence of Portland's analog sound.
-                        </p>
-                        <!-- Replace with actual Bandcamp embed -->
-                        <div class="embed-container" style="padding-bottom: 400px;">
+            <div class="max-w-6xl mx-auto">
+                <!-- Page Header -->
+                <!-- <div class="text-center mb-16 fade-in-up">
+                    <h1 class="text-4xl font-bold text-brand-orange mb-4">Listen</h1>
+                    <p class="text-brand-warm-gray text-lg max-w-2xl mx-auto">
+                        Stream our latest tracks and discover the sounds of Seismic Standard
+                    </p>
+                </div> -->
+
+                <!-- Track Grid -->
+                <div class="grid md:grid-cols-2 gap-8 mb-16">
+                    <!-- Brave New World -->
+                    <div class="fade-in-up delay-200">
+                        <div class="relative group">
                             <div
-                                class="absolute inset-0 bg-gradient-to-br from-brand-brown to-brand-charcoal rounded-lg flex items-center justify-center">
-                                <div class="text-center text-brand-cream p-8">
-                                    <svg class="w-20 h-20 mx-auto mb-4 text-brand-orange" fill="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
-                                    </svg>
-                                    <h3 class="text-xl font-bold mb-2">Bandcamp Embed</h3>
-                                    <p class="text-brand-warm-gray">Replace this placeholder with your Bandcamp iframe
-                                        code</p>
-                                    <code class="text-sm text-brand-yellow mt-4 block">
-                                        &lt;iframe style="border: 0; width: 100%; height: 400px;" src="YOUR_BANDCAMP_URL"&gt;&lt;/iframe&gt;
-                                    </code>
+                                class="absolute -inset-1 bg-brand-yellow rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
+                            </div>
+                            <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-yellow/20">
+                                <h3 class="text-2xl font-bold text-brand-yellow mb-2 text-center">Brave New World</h3>
+                                <div class="flex justify-center">
+                                    <iframe style="border: 0; width: 350px; height: 350px;"
+                                        src="https://bandcamp.com/EmbeddedPlayer/track=4172939758/size=large/bgcol=2E2222/linkcol=FFB319/tracklist=false/minimal=true/transparent=true/"
+                                        seamless><a
+                                            href="https://seismicstandard.bandcamp.com/track/brave-new-world">Brave
+                                            New World by Seismic Standard</a></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Never Comin' Home -->
+                    <div class="fade-in-up delay-100">
+                        <div class="relative group">
+                            <div
+                                class="absolute -inset-1 bg-brand-orange rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
+                            </div>
+                            <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-orange/20">
+                                <h3 class="text-2xl font-bold text-brand-orange mb-2 text-center">Never Comin' Home</h3>
+                                <div class="flex justify-center">
+                                    <iframe style="border: 0; width: 350px; height: 350px;"
+                                        src="https://bandcamp.com/EmbeddedPlayer/track=1152541996/size=large/bgcol=2E2222/linkcol=D94E2A/tracklist=false/minimal=true/transparent=true/"
+                                        seamless><a
+                                            href="https://seismicstandard.bandcamp.com/track/never-comin-home">Never
+                                            Comin&#39; Home by Seismic Standard</a></iframe>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Bandcamp Album Embed 2 -->
-                <div class="mb-16 fade-in-up delay-200">
-                    <div class="bg-white rounded-lg shadow-xl p-8 border-l-4 border-brand-yellow">
-                        <h2 class="text-3xl font-bold text-brand-orange mb-4">Previous Release</h2>
-                        <p class="text-brand-warm-gray mb-6">
-                            The album that started it all. Vintage vibes meet modern production.
-                        </p>
-                        <!-- Replace with actual Bandcamp embed -->
-                        <div class="embed-container" style="padding-bottom: 400px;">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-brand-plum to-brand-wine rounded-lg flex items-center justify-center">
-                                <div class="text-center text-brand-cream p-8">
-                                    <svg class="w-20 h-20 mx-auto mb-4 text-brand-yellow" fill="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
-                                    </svg>
-                                    <h3 class="text-xl font-bold mb-2">Bandcamp Embed</h3>
-                                    <p class="text-brand-warm-gray">Replace this placeholder with your Bandcamp iframe
-                                        code</p>
-                                    <code class="text-sm text-brand-yellow mt-4 block">
-                                        &lt;iframe style="border: 0; width: 100%; height: 400px;" src="YOUR_BANDCAMP_URL"&gt;&lt;/iframe&gt;
-                                    </code>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Singles Section -->
-                <div class="fade-in-up delay-300">
-                    <div class="bg-white rounded-lg shadow-xl p-8 border-l-4 border-brand-teal">
-                        <h2 class="text-3xl font-bold text-brand-orange mb-4">Singles & EPs</h2>
-                        <p class="text-brand-warm-gray mb-6">
-                            Check out our latest singles and experimental tracks.
-                        </p>
-                        <!-- Replace with actual Bandcamp embed -->
-                        <div class="embed-container" style="padding-bottom: 400px;">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-brand-sage to-brand-teal rounded-lg flex items-center justify-center">
-                                <div class="text-center text-brand-cream p-8">
-                                    <svg class="w-20 h-20 mx-auto mb-4 text-brand-yellow" fill="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
-                                    </svg>
-                                    <h3 class="text-xl font-bold mb-2">Bandcamp Embed</h3>
-                                    <p class="text-brand-warm-gray">Replace this placeholder with your Bandcamp iframe
-                                        code</p>
-                                    <code class="text-sm text-brand-yellow mt-4 block">
-                                        &lt;iframe style="border: 0; width: 100%; height: 400px;" src="YOUR_BANDCAMP_URL"&gt;&lt;/iframe&gt;
-                                    </code>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Streaming Links Section -->
-    <section class="py-20 bg-gradient-to-br from-brand-brown to-brand-charcoal">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-4xl font-bold text-brand-orange mb-8 fade-in-up">Find Us On</h2>
-                <div class="grid md:grid-cols-3 gap-6 fade-in-up delay-100">
-                    <a href="#"
-                        class="bg-brand-cream/10 hover:bg-brand-cream/20 border-2 border-brand-orange rounded-lg p-8 transition-all hover:transform hover:scale-105">
-                        <div class="text-brand-orange mb-4">
-                            <svg class="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M0 8.5v7h8.5l3.5-7H0z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-cream">Bandcamp</h3>
-                    </a>
-                    <a href="#"
-                        class="bg-brand-cream/10 hover:bg-brand-cream/20 border-2 border-brand-yellow rounded-lg p-8 transition-all hover:transform hover:scale-105">
-                        <div class="text-brand-yellow mb-4">
-                            <svg class="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-cream">Spotify</h3>
-                    </a>
-                    <a href="#"
-                        class="bg-brand-cream/10 hover:bg-brand-cream/20 border-2 border-brand-teal rounded-lg p-8 transition-all hover:transform hover:scale-105">
-                        <div class="text-brand-teal mb-4">
-                            <svg class="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.25 17.063c-.146.146-.292.219-.438.219-.146 0-.292-.073-.438-.219l-3.646-3.646v7.083c0 .292-.292.583-.583.583s-.583-.292-.583-.583V13.417l-3.646 3.646c-.292.292-.729.292-1.021 0s-.292-.729 0-1.021l4.667-4.667c.292-.292.729-.292 1.021 0l4.667 4.667c.292.292.292.729 0 1.021zM12 9.333c-.438 0-.875-.146-1.167-.438L6.521 4.583c-.292-.292-.292-.729 0-1.021s.729-.292 1.021 0L12 7.208l4.458-3.646c.292-.292.729-.292 1.021 0s.292.729 0 1.021l-4.312 4.313c-.292.292-.729.438-1.167.438z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-cream">SoundCloud</h3>
+                <!-- Bandcamp CTA -->
+                <div class="text-center fade-in-up delay-300">
+                    <a href="https://seismicstandard.bandcamp.com/" target="_blank"
+                        class="btn-primary inline-flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M0 8.5v7h8.5l3.5-7H0z" />
+                        </svg>
+                        Visit Our Bandcamp
                     </a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20 bg-brand-cream-light">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-brand-brown mb-6 fade-in-up">Experience It Live</h2>
-            <p class="text-brand-warm-gray text-lg mb-8 fade-in-up delay-100">
-                Nothing beats the analog warmth of a live performance
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up delay-200">
-                <a href="shows.html" class="btn-primary">View Shows</a>
-                <a href="watch.html" class="btn-secondary">Watch Videos</a>
             </div>
         </div>
     </section>
@@ -245,7 +163,6 @@
     <footer class="bg-brand-brown py-12">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <p class="text-brand-warm-gray mb-4">&copy; 2025 Seismic Standard. Portland, OR.</p>
                 <div class="flex justify-center space-x-6">
                     <a href="#" class="text-brand-orange hover:text-brand-yellow transition-colors"
                         aria-label="Bandcamp">
@@ -268,6 +185,7 @@
                         </svg>
                     </a>
                 </div>
+                <p class="text-brand-warm-gray mt-4">&copy; 2025 Seismic Standard</p>
             </div>
         </div>
     </footer>
