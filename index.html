@@ -46,23 +46,23 @@
     </script>
 </head>
 
-<body class="bg-brand-brown text-brand-cream">
+<body class="text-brand-cream min-h-screen"
+    style="background: linear-gradient(to bottom right, #2E2222, #3D3634); background-attachment: fixed; background-size: cover;">
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between py-4">
                 <!-- Logo -->
-                <a href="/" class="navbar-brand">
+                <a href="#" class="navbar-brand">
                     Seismic Standard
                 </a>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-8 items-center" style="margin-left: 123px;">
-                    <!-- <a href="bio.html" class="nav-link">Bio</a> -->
-                    <a href="watch.html" class="nav-link">Watch</a>
-                    <a href="listen.html" class="nav-link">Listen</a>
-                    <!-- <a href="shows.html" class="nav-link">Shows</a> -->
-                    <!-- <a href="contact.html" class="nav-link">Contact</a> -->
+                    <a href="#watch" class="nav-link">Watch</a>
+                    <a href="#listen" class="nav-link">Listen</a>
+                    <a href="#bio" class="nav-link">Bio</a>
+                    <a href="#contact" class="nav-link">Contact</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -83,22 +83,16 @@
         <div id="mobile-menu"
             class="hidden md:hidden backdrop-blur-lg bg-brand-brown/95 border-t border-brand-orange/30">
             <div class="px-4 py-4 space-y-3">
-                <!-- <a href="bio.html" class="mobile-nav-link">Bio</a> -->
-                <a href="watch.html" class="mobile-nav-link">Watch</a>
-                <a href="listen.html" class="mobile-nav-link">Listen</a>
-                <!-- <a href="shows.html" class="mobile-nav-link">Shows</a> -->
-                <!-- <a href="contact.html" class="mobile-nav-link">Contact</a> -->
+                <a href="#watch" class="mobile-nav-link">Watch</a>
+                <a href="#listen" class="mobile-nav-link">Listen</a>
+                <a href="#bio" class="mobile-nav-link">Bio</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 bg-gradient-to-br from-brand-brown via-brand-charcoal to-brand-plum opacity-95">
-        </div>
-        <div class="absolute inset-0 noise-texture"></div>
-
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
         <!-- Content -->
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -144,15 +138,144 @@
             </div>
         </div>
 
-        <!-- Scroll Indicator - Commented out for cleaner homepage -->
-        <!-- <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <svg class="w-6 h-6 text-brand-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300"
+            onclick="document.getElementById('watch').scrollIntoView({behavior: 'smooth'})">
+            <svg class="w-6 h-6 text-brand-yellow hover:text-brand-orange transition-colors duration-300" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
                 </path>
             </svg>
-        </div> -->
+        </div>
     </section>
 
+    <!-- Watch Section -->
+    <section id="watch" class="py-20 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title fade-in-up">Watch</h2>
+
+            <div class="mb-10 fade-in-up delay-100">
+                <div class="max-w-4xl mx-auto">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-brand-orange rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
+                        </div>
+                        <div class="relative embed-container hover:transform-none">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-brand-brown to-brand-charcoal rounded-lg flex items-center justify-center">
+                                <div class="text-center text-brand-cream p-8">
+                                    <iframe width="1224" height="689" src="https://www.youtube.com/embed/oGW-PqW_ZJ0"
+                                        title="Saturn Returns Live at Covert Cafe" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="text-2xl font-bold text-brand-orange">Saturn Returns</h3>
+                        <p class="text-brand-warm-gray">Covert Cafe 1/17/25</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Watch More Button -->
+            <div class="text-center fade-in-up delay-200">
+                <a href="https://www.youtube.com/@seismicstandard" target="_blank"
+                    class="btn-primary inline-flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                    Watch and Subscribe
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Listen Section -->
+    <section id="listen" class="py-20 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title fade-in-up">Listen</h2>
+
+            <!-- Track Grid -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- Brave New World -->
+                <div class="fade-in-up delay-200">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-brand-yellow rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
+                        </div>
+                        <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-yellow/20">
+                            <h3 class="text-2xl font-bold text-brand-yellow mb-2 text-center">Brave New World</h3>
+                            <div class="flex justify-center">
+                                <iframe style="border: 0; width: 350px; height: 350px;"
+                                    src="https://bandcamp.com/EmbeddedPlayer/track=4172939758/size=large/bgcol=2E2222/linkcol=FFB319/tracklist=false/minimal=true/transparent=true/"
+                                    seamless><a href="https://seismicstandard.bandcamp.com/track/brave-new-world">Brave
+                                        New World by Seismic Standard</a></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Never Comin' Home -->
+                <div class="fade-in-up delay-100">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-brand-orange rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
+                        </div>
+                        <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-orange/20">
+                            <h3 class="text-2xl font-bold text-brand-orange mb-2 text-center">Never Comin' Home</h3>
+                            <div class="flex justify-center">
+                                <iframe style="border: 0; width: 350px; height: 350px;"
+                                    src="https://bandcamp.com/EmbeddedPlayer/track=1152541996/size=large/bgcol=2E2222/linkcol=D94E2A/tracklist=false/minimal=true/transparent=true/"
+                                    seamless><a href="https://seismicstandard.bandcamp.com/track/never-comin-home">Never
+                                        Comin&#39; Home by Seismic Standard</a></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bandcamp CTA -->
+            <div class="text-center fade-in-up delay-300">
+                <a href="https://seismicstandard.bandcamp.com/" target="_blank"
+                    class="btn-primary inline-flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M0 8.5v7h8.5l3.5-7H0z" />
+                    </svg>
+                    Visit Our Bandcamp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bio Section -->
+    <section id="bio" class="py-20 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="section-title fade-in-up">Bio</h2>
+                <div class="bio-content fade-in-up delay-100">
+                    <p class="text-lg text-brand-cream leading-relaxed">
+                        Coming Soon!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="section-title fade-in-up">Contact</h2>
+                <div class="fade-in-up delay-100">
+                    <p class="text-lg text-brand-cream leading-relaxed mb-8">
+                        Coming Soon!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Next Shows Preview Section - Commented out for cleaner homepage -->
     <!-- <section class="py-20 bg-brand-charcoal relative overflow-hidden">
@@ -176,7 +299,7 @@
     </section> -->
 
     <!-- Footer -->
-    <footer class="bg-brand-brown py-12">
+    <footer class="py-12 relative z-10">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <div class="flex justify-center space-x-6">
