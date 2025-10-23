@@ -318,19 +318,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		// Update active nav link based on scroll position
 		let currentSection = '';
+		let closestSection = '';
+		let closestDistance = Infinity;
+
 		allSections.forEach((section) => {
 			const rect = section.getBoundingClientRect();
 			const sectionTop = rect.top;
 			const sectionHeight = rect.height;
+			const sectionCenter = sectionTop + sectionHeight / 2;
 
-			// Check if section is in viewport
+			// Calculate distance from viewport center
+			const viewportCenter = windowHeight / 2;
+			const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
+
+			// Track the closest section to viewport center
+			if (distanceFromCenter < closestDistance) {
+				closestDistance = distanceFromCenter;
+				closestSection = section.id;
+			}
+
+			// Also check if section is significantly in viewport (more lenient)
 			if (
-				sectionTop <= windowHeight * 0.3 &&
-				sectionTop + sectionHeight > windowHeight * 0.3
+				sectionTop <= windowHeight * 0.4 &&
+				sectionTop + sectionHeight > windowHeight * 0.1
 			) {
 				currentSection = section.id;
 			}
 		});
+
+		// Use the closest section if no section meets the viewport criteria
+		if (!currentSection && closestSection) {
+			currentSection = closestSection;
+		}
 
 		// Update nav link active states
 		navLinks.forEach((link) => {
