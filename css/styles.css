@@ -3,7 +3,9 @@
    ================================ */
 @font-face {
 	font-family: 'Chinese Sthupo';
-	src: url('../fonts/chinese.sthupo.ttf') format('truetype');
+	src: url('./fonts/chinese.sthupo.ttf') format('truetype'),
+		url('fonts/chinese.sthupo.ttf') format('truetype'),
+		url('../fonts/chinese.sthupo.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
@@ -46,7 +48,7 @@ nav.scrolled #nav-logo {
 nav.scrolled #nav-logo-text {
 	display: block;
 	color: #ffb319;
-	font-family: 'Chinese Sthupo', sans-serif;
+	font-family: 'Chinese Sthupo', 'Arial', 'Helvetica', sans-serif;
 	font-size: 1.5rem;
 	font-weight: 400;
 }
@@ -84,7 +86,7 @@ nav.scrolled .-mt-7 {
 }
 
 .navbar-brand {
-	font-family: 'Chinese Sthupo', sans-serif;
+	font-family: 'Chinese Sthupo', 'Arial', 'Helvetica', sans-serif;
 	font-size: 1.5rem;
 	font-weight: 400;
 	color: #ffb319;
