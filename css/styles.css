@@ -29,14 +29,58 @@ body {
 nav {
 	background: transparent !important;
 	box-shadow: none !important;
+	transition: opacity 0.3s ease-out, transform 0.3s ease-out,
+		background-color 0.3s ease-out;
 }
 
-/* Add background on mobile */
-@media (max-width: 768px) {
-	nav {
-		background: rgba(46, 34, 34, 0.8) !important;
-		backdrop-filter: blur(10px);
-	}
+nav.scrolled {
+	background: rgba(46, 34, 34, 0.9) !important;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+nav.scrolled #nav-logo {
+	display: none;
+}
+
+nav.scrolled #nav-logo-text {
+	display: block;
+	color: #ffb319;
+	font-family: 'Chinese Sthupo', sans-serif;
+	font-size: 1.5rem;
+	font-weight: 400;
+}
+
+#nav-logo-text {
+	display: none;
+}
+
+/* Adjust nav link margins when scrolled (text logo) */
+nav.scrolled .hidden.md\\:flex,
+nav.scrolled .md\\:hidden.flex {
+	margin-top: 0 !important;
+}
+
+/* Alternative approach - target the nav links directly */
+nav.scrolled .nav-link {
+	margin-top: 0 !important;
+}
+
+/* Target the specific nav containers */
+nav.scrolled div[class*='hidden md:flex'],
+nav.scrolled div[class*='md:hidden flex'] {
+	margin-top: 0 !important;
+}
+
+/* More specific targeting */
+nav.scrolled .space-x-8,
+nav.scrolled .space-x-6 {
+	margin-top: 0 !important;
+}
+
+/* Target the exact Tailwind classes */
+nav.scrolled .-mt-7 {
+	margin-top: 0 !important;
 }
 
 .navbar-brand {
@@ -61,11 +105,14 @@ nav {
 	padding: 0.5rem 0;
 	position: relative;
 	transition: color 0.3s ease;
+	outline: none;
 }
 
 .nav-link:hover,
 .nav-link:focus {
 	color: #ffb319;
+	outline: none;
+	box-shadow: none;
 }
 
 .nav-link::after {
@@ -543,8 +590,26 @@ nav {
 }
 
 /* ================================
-   Responsive Typography
+   Hero Section Overlay Styles
    ================================ */
+#hero-logo svg {
+	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.hero-overlay-text {
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* ================================
+   Responsive Typography & Layout
+   ================================ */
+@media (max-width: 1024px) {
+	.container {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
+
 @media (max-width: 768px) {
 	.section-title {
 		font-size: 2rem;
@@ -554,6 +619,28 @@ nav {
 		flex-direction: column;
 		text-align: center;
 	}
+
+	.container {
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+	}
+
+	/* Mobile hero adjustments */
+	#hero-logo {
+		max-width: 90vw;
+	}
+
+	.hero-overlay-text h2 {
+		font-size: 1.5rem;
+	}
+
+	.hero-overlay-text .text-lg {
+		font-size: 1rem;
+	}
+
+	.hero-overlay-text .text-xl {
+		font-size: 1.125rem;
+	}
 }
 
 /* ================================
@@ -561,8 +648,14 @@ nav {
    ================================ */
 a:focus,
 button:focus {
-	outline: 2px solid #ffb319;
-	outline-offset: 2px;
+	outline: none;
+	box-shadow: none;
+}
+
+/* Remove focus outlines from nav links specifically */
+.nav-link:focus {
+	outline: none !important;
+	box-shadow: none !important;
 }
 
 /* ================================
@@ -754,4 +847,11 @@ button:focus {
 	.page-hero h1 {
 		font-size: 2.5rem;
 	}
+}
+
+/* ================================
+   Scroll Effects - All Sections Fade In/Out
+   ================================ */
+section {
+	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
