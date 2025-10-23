@@ -904,41 +904,86 @@ section {
 		padding: 0 !important;
 		box-shadow: none !important;
 	}
-	
+
 	#listen .relative.group .absolute {
 		display: none !important;
 	}
-	
+
 	#listen .relative.bg-brand-brown {
 		background: transparent !important;
 		border: none !important;
 		padding: 0 !important;
 	}
-	
+
 	/* Adjust iframe sizing for mobile */
 	#listen iframe {
 		width: 100% !important;
 		max-width: 350px !important;
 		height: 350px !important;
 	}
-	
+
 	/* Center the content */
 	#listen .flex.justify-center {
 		justify-content: center !important;
 	}
 }
 
-	/* Keep side-by-side when text logo is active */
-	nav.scrolled .flex.items-center.justify-between {
-		flex-direction: row;
-		align-items: center;
-		gap: 0;
+/* ================================
+   Next Show Container Mobile Layout
+   ================================ */
+@media (max-width: 768px) {
+	/* Make Next Show container full width */
+	.absolute.bottom-8.right-8 {
+		position: absolute !important;
+		bottom: 2rem !important;
+		left: 1rem !important;
+		right: 1rem !important;
+		width: auto !important;
+		max-width: none !important;
 	}
 
-	nav.scrolled .hidden.md\\:flex,
-	nav.scrolled .md\\:hidden.flex {
-		margin-top: 0;
-		width: auto;
-		justify-content: flex-end;
+	/* Change text alignment to left */
+	.text-right {
+		text-align: left !important;
 	}
+
+	/* Restructure the show info layout */
+	.flex.flex-col.items-end {
+		flex-direction: row !important;
+		flex-wrap: wrap !important;
+		align-items: flex-start !important;
+		gap: 1rem !important;
+	}
+
+	/* Put "Next Show" title on its own line */
+	.text-right h2 {
+		width: 100% !important;
+		margin-bottom: 0.5rem !important;
+	}
+
+	/* Put date/time and venue on same line */
+	.text-right .flex.flex-col.items-end > div:first-child,
+	.text-right .flex.flex-col.items-end > div:last-child {
+		flex: 1 !important;
+		min-width: 0 !important;
+	}
+
+	/* Right align the venue */
+	.text-right .flex.flex-col.items-end > div:last-child {
+		text-align: right !important;
+	}
+}
+
+/* Keep side-by-side when text logo is active */
+nav.scrolled .flex.items-center.justify-between {
+	flex-direction: row;
+	align-items: center;
+	gap: 0;
+}
+
+nav.scrolled .hidden.md\\:flex,
+nav.scrolled .md\\:hidden.flex {
+	margin-top: 0;
+	width: auto;
+	justify-content: flex-end;
 }
