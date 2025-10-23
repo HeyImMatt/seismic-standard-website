@@ -855,3 +855,14 @@ button:focus {
 section {
 	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
+/* ================================
+   Section Spacing Adjustments
+   ================================ */
+#watch {
+	padding-top: 8rem; /* Extra top padding to account for fixed nav */
+}
+
+#listen {
+	padding-top: 8rem; /* Extra top padding to account for fixed nav */
+}
