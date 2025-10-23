@@ -866,3 +866,43 @@ section {
 #listen {
 	padding-top: 8rem; /* Extra top padding to account for fixed nav */
 }
+
+/* ================================
+   Mobile Navigation Layout
+   ================================ */
+@media (max-width: 480px) {
+	/* Stack nav links under logo when SVG logo is active */
+	nav:not(.scrolled) .flex.items-center.justify-between {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	nav:not(.scrolled) .hidden.md\\:flex,
+	nav:not(.scrolled) .md\\:hidden.flex {
+		width: 100% !important;
+		justify-content: flex-start !important;
+	}
+
+	/* More specific targeting for mobile nav containers */
+	@media (max-width: 480px) {
+		nav:not(.scrolled) div[class*='md:hidden flex'] {
+			margin-top: -80px !important;
+			margin-left: 20px !important;
+		}
+	}
+
+	/* Keep side-by-side when text logo is active */
+	nav.scrolled .flex.items-center.justify-between {
+		flex-direction: row;
+		align-items: center;
+		gap: 0;
+	}
+
+	nav.scrolled .hidden.md\\:flex,
+	nav.scrolled .md\\:hidden.flex {
+		margin-top: 0;
+		width: auto;
+		justify-content: flex-end;
+	}
+}
