@@ -891,6 +891,42 @@ section {
 			margin-left: 20px !important;
 		}
 	}
+}
+
+/* ================================
+   Listen Section Mobile Adjustments
+   ================================ */
+@media (max-width: 425px) {
+	/* Remove container styling for listen tracks */
+	#listen .relative.group {
+		background: none !important;
+		border: none !important;
+		padding: 0 !important;
+		box-shadow: none !important;
+	}
+	
+	#listen .relative.group .absolute {
+		display: none !important;
+	}
+	
+	#listen .relative.bg-brand-brown {
+		background: transparent !important;
+		border: none !important;
+		padding: 0 !important;
+	}
+	
+	/* Adjust iframe sizing for mobile */
+	#listen iframe {
+		width: 100% !important;
+		max-width: 350px !important;
+		height: 350px !important;
+	}
+	
+	/* Center the content */
+	#listen .flex.justify-center {
+		justify-content: center !important;
+	}
+}
 
 	/* Keep side-by-side when text logo is active */
 	nav.scrolled .flex.items-center.justify-between {
