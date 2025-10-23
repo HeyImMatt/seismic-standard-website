@@ -276,70 +276,30 @@ function initKeyboardNav() {
 // Font Loading Check
 // ================================
 function checkFontLoading() {
-	console.log('Checking font loading...');
-
-	// Multiple detection methods for maximum compatibility
-	let fontLoaded = false;
-
-	// Method 1: Modern Font Loading API
+	// Check if custom font is loaded
 	if (document.fonts && document.fonts.check) {
-		fontLoaded = document.fonts.check('16px "Chinese Sthupo"');
-		console.log('Font Loading API result:', fontLoaded);
+		const fontLoaded = document.fonts.check('16px "Chinese Sthupo"');
+		if (!fontLoaded) {
+			console.log('Custom font not loaded, using fallback');
+			// Force fallback font for mobile compatibility
+			document.documentElement.style.setProperty(
+				'--logo-font',
+				'Arial, Helvetica, sans-serif',
+			);
+
+			// Also update SVG elements that might have embedded fonts
+			updateSVGFonts('Arial, Helvetica, sans-serif');
+		} else {
+			console.log('Custom font loaded successfully');
+			document.documentElement.style.setProperty(
+				'--logo-font',
+				'"Chinese Sthupo", Arial, Helvetica, sans-serif',
+			);
+
+			// Update SVG elements with custom font
+			updateSVGFonts('"Chinese Sthupo", Arial, Helvetica, sans-serif');
+		}
 	}
-
-	// Method 2: Canvas measurement fallback
-	if (!fontLoaded) {
-		fontLoaded = measureFontFallback();
-		console.log('Canvas measurement result:', fontLoaded);
-	}
-
-	// Method 3: Force load the font
-	if (!fontLoaded && document.fonts && document.fonts.load) {
-		document.fonts
-			.load('16px "Chinese Sthupo"')
-			.then(() => {
-				console.log('Font loaded via Font Loading API');
-				applyFont('"Chinese Sthupo", Arial, Helvetica, sans-serif');
-			})
-			.catch(() => {
-				console.log('Font loading failed, using fallback');
-				applyFont('Arial, Helvetica, sans-serif');
-			});
-	} else if (fontLoaded) {
-		console.log('Custom font loaded successfully');
-		applyFont('"Chinese Sthupo", Arial, Helvetica, sans-serif');
-	} else {
-		console.log('Custom font not loaded, using fallback');
-		applyFont('Arial, Helvetica, sans-serif');
-	}
-}
-
-function measureFontFallback() {
-	// Create a canvas to measure font rendering
-	const canvas = document.createElement('canvas');
-	const ctx = canvas.getContext('2d');
-
-	// Measure with fallback font
-	ctx.font = '16px Arial, Helvetica, sans-serif';
-	const fallbackWidth = ctx.measureText('Test').width;
-
-	// Measure with custom font
-	ctx.font = '16px "Chinese Sthupo", Arial, Helvetica, sans-serif';
-	const customWidth = ctx.measureText('Test').width;
-
-	// If widths are different, custom font is loaded
-	return Math.abs(fallbackWidth - customWidth) > 0.1;
-}
-
-function applyFont(fontFamily) {
-	// Update CSS custom property
-	document.documentElement.style.setProperty('--logo-font', fontFamily);
-
-	// Update SVG elements
-	updateSVGFonts(fontFamily);
-
-	// Force reflow to apply changes
-	document.body.offsetHeight;
 }
 
 function updateSVGFonts(fontFamily) {
@@ -378,16 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initFormValidation();
 	initKeyboardNav();
 
-	// Multiple font loading checks for mobile reliability
-	setTimeout(checkFontLoading, 500);
-	setTimeout(checkFontLoading, 1000);
-	setTimeout(checkFontLoading, 2000);
-	setTimeout(checkFontLoading, 5000);
-});
-
-// Also check on window load for slower connections
-window.addEventListener('load', () => {
-	setTimeout(checkFontLoading, 100);
+	// Check font loading again after a delay
 	setTimeout(checkFontLoading, 1000);
 });
 
