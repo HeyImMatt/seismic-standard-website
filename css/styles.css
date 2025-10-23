@@ -5,15 +5,21 @@
 	font-family: 'Chinese Sthupo';
 	src: url('./fonts/chinese.sthupo.ttf') format('truetype'),
 		url('fonts/chinese.sthupo.ttf') format('truetype'),
-		url('../fonts/chinese.sthupo.ttf') format('truetype');
+		url('../fonts/chinese.sthupo.ttf') format('truetype'),
+		url('./fonts/chinese.sthupo.woff2') format('woff2'),
+		url('./fonts/chinese.sthupo.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
-	font-display: swap;
+	font-display: block;
 }
 
 /* ================================
    Global Styles & Resets
    ================================ */
+:root {
+	--logo-font: 'Chinese Sthupo', Arial, Helvetica, sans-serif;
+}
+
 * {
 	scroll-behavior: smooth;
 }
@@ -48,7 +54,7 @@ nav.scrolled #nav-logo {
 nav.scrolled #nav-logo-text {
 	display: block;
 	color: #ffb319;
-	font-family: 'Chinese Sthupo', 'Arial', 'Helvetica', sans-serif;
+	font-family: var(--logo-font);
 	font-size: 1.5rem;
 	font-weight: 400;
 }
@@ -86,7 +92,7 @@ nav.scrolled .-mt-7 {
 }
 
 .navbar-brand {
-	font-family: 'Chinese Sthupo', 'Arial', 'Helvetica', sans-serif;
+	font-family: var(--logo-font);
 	font-size: 1.5rem;
 	font-weight: 400;
 	color: #ffb319;
@@ -334,6 +340,14 @@ nav.scrolled .-mt-7 {
 		opacity: 1;
 		transform: translateY(0);
 	}
+}
+
+/* ================================
+   SVG Font Overrides
+   ================================ */
+svg text,
+svg tspan {
+	font-family: var(--logo-font) !important;
 }
 
 /* ================================

@@ -272,10 +272,64 @@ function initKeyboardNav() {
 }
 
 // ================================
+// ================================
+// Font Loading Check
+// ================================
+function checkFontLoading() {
+	// Check if custom font is loaded
+	if (document.fonts && document.fonts.check) {
+		const fontLoaded = document.fonts.check('16px "Chinese Sthupo"');
+		if (!fontLoaded) {
+			console.log('Custom font not loaded, using fallback');
+			// Force fallback font for mobile compatibility
+			document.documentElement.style.setProperty(
+				'--logo-font',
+				'Arial, Helvetica, sans-serif',
+			);
+
+			// Also update SVG elements that might have embedded fonts
+			updateSVGFonts('Arial, Helvetica, sans-serif');
+		} else {
+			console.log('Custom font loaded successfully');
+			document.documentElement.style.setProperty(
+				'--logo-font',
+				'"Chinese Sthupo", Arial, Helvetica, sans-serif',
+			);
+
+			// Update SVG elements with custom font
+			updateSVGFonts('"Chinese Sthupo", Arial, Helvetica, sans-serif');
+		}
+	}
+}
+
+function updateSVGFonts(fontFamily) {
+	// Find all SVG text elements and update their font-family
+	const svgTextElements = document.querySelectorAll('svg text, svg tspan');
+	svgTextElements.forEach((element) => {
+		element.style.fontFamily = fontFamily;
+	});
+
+	// Also check for SVG elements with font-family in style attribute
+	const svgElements = document.querySelectorAll('svg');
+	svgElements.forEach((svg) => {
+		const style = svg.getAttribute('style') || '';
+		if (style.includes('font-family')) {
+			svg.setAttribute(
+				'style',
+				style.replace(
+					/font-family:[^;]+/g,
+					`font-family: ${fontFamily}`,
+				),
+			);
+		}
+	});
+}
+
 // Initialize Everything on Page Load
 // ================================
 
 document.addEventListener('DOMContentLoaded', () => {
+	checkFontLoading();
 	insertLogos();
 	initScrollAnimations();
 	initSmoothScroll();
@@ -283,6 +337,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	initParallax();
 	initFormValidation();
 	initKeyboardNav();
+
+	// Check font loading again after a delay
+	setTimeout(checkFontLoading, 1000);
 });
 
 // ================================
