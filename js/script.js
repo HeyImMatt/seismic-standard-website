@@ -272,34 +272,52 @@ function initKeyboardNav() {
 }
 
 // ================================
-// ================================
 // Font Loading Check
 // ================================
-function checkFontLoading() {
-	// Check if custom font is loaded
-	if (document.fonts && document.fonts.check) {
-		const fontLoaded = document.fonts.check('16px "Chinese Sthupo"');
-		if (!fontLoaded) {
-			console.log('Custom font not loaded, using fallback');
-			// Force fallback font for mobile compatibility
-			document.documentElement.style.setProperty(
-				'--logo-font',
-				'Arial, Helvetica, sans-serif',
-			);
+async function checkFontLoading() {
+	// Use font loading API if available
+	if (document.fonts && document.fonts.load) {
+		try {
+			// Try to load the font explicitly
+			await document.fonts.load('16px "Chinese Sthupo"');
 
-			// Also update SVG elements that might have embedded fonts
-			updateSVGFonts('Arial, Helvetica, sans-serif');
-		} else {
-			console.log('Custom font loaded successfully');
+			// Double-check with status API
+			if (
+				document.fonts.check &&
+				document.fonts.check('16px "Chinese Sthupo"')
+			) {
+				document.documentElement.style.setProperty(
+					'--logo-font',
+					'"Chinese Sthupo", Arial, Helvetica, sans-serif',
+				);
+				console.log('Custom font loaded successfully');
+			} else {
+				useFallbackFont();
+			}
+		} catch (error) {
+			console.log('Font loading error, using fallback:', error);
+			useFallbackFont();
+		}
+	} else if (document.fonts && document.fonts.check) {
+		// Fallback for browsers without font loading API
+		const fontLoaded = document.fonts.check('16px "Chinese Sthupo"');
+		if (fontLoaded) {
 			document.documentElement.style.setProperty(
 				'--logo-font',
 				'"Chinese Sthupo", Arial, Helvetica, sans-serif',
 			);
-
-			// Update SVG elements with custom font
-			updateSVGFonts('"Chinese Sthupo", Arial, Helvetica, sans-serif');
+		} else {
+			useFallbackFont();
 		}
 	}
+}
+
+function useFallbackFont() {
+	console.log('Custom font not loaded, using fallback');
+	document.documentElement.style.setProperty(
+		'--logo-font',
+		'Arial, Helvetica, sans-serif',
+	);
 }
 
 function updateSVGFonts(fontFamily) {
@@ -328,8 +346,8 @@ function updateSVGFonts(fontFamily) {
 // Initialize Everything on Page Load
 // ================================
 
-document.addEventListener('DOMContentLoaded', () => {
-	checkFontLoading();
+document.addEventListener('DOMContentLoaded', async () => {
+	await checkFontLoading();
 	insertLogos();
 	initScrollAnimations();
 	initSmoothScroll();
@@ -340,8 +358,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	initVideoCarousel();
 
 	// Check font loading again after a delay
-	setTimeout(checkFontLoading, 1000);
+	setTimeout(() => checkFontLoading(), 1000);
 });
+
+// Listen for font loading events for additional reliability
+if (document.fonts && document.fonts.addEventListener) {
+	document.fonts.addEventListener('loadingdone', (event) => {
+		checkFontLoading();
+	});
+}
 
 // ================================
 // Handle page visibility for animations

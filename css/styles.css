@@ -5,12 +5,10 @@
 	font-family: 'Chinese Sthupo';
 	src: url('./fonts/chinese.sthupo.ttf') format('truetype'),
 		url('fonts/chinese.sthupo.ttf') format('truetype'),
-		url('../fonts/chinese.sthupo.ttf') format('truetype'),
-		url('./fonts/chinese.sthupo.woff2') format('woff2'),
-		url('./fonts/chinese.sthupo.woff') format('woff');
+		url('../fonts/chinese.sthupo.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
-	font-display: block;
+	font-display: swap;
 }
 
 /* ================================
