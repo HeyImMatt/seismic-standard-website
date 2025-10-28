@@ -806,6 +806,111 @@ button:focus {
 }
 
 /* ================================
+   Video Carousel Styles
+   ================================ */
+.video-carousel-container {
+	scrollbar-width: thin;
+	scrollbar-color: #d94e2a #3d3634;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.video-carousel-container::-webkit-scrollbar {
+	height: 8px;
+}
+
+.video-carousel-container::-webkit-scrollbar-track {
+	background: #3d3634;
+	border-radius: 4px;
+}
+
+.video-carousel-container::-webkit-scrollbar-thumb {
+	background: #d94e2a;
+	border-radius: 4px;
+}
+
+.video-carousel-container::-webkit-scrollbar-thumb:hover {
+	background: #ffb319;
+}
+
+.video-carousel-item {
+	min-width: 240px;
+	max-width: 280px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	padding: 4px;
+}
+
+@media (max-width: 768px) {
+	.video-carousel-item {
+		min-width: 180px;
+		max-width: 200px;
+	}
+}
+
+.video-carousel-item img {
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+	transition: all 0.3s ease;
+	border: 2px solid transparent;
+}
+
+.video-carousel-item:hover img {
+	transform: scale(1.05);
+	border-color: #d94e2a;
+	box-shadow: 0 8px 16px rgba(217, 78, 42, 0.4);
+}
+
+.video-carousel-item.active img {
+	border-color: #ffb319;
+	border-width: 3px;
+	box-shadow: 0 8px 20px rgba(255, 179, 25, 0.5);
+}
+
+.video-carousel-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+	border-radius: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
+.video-play-icon {
+	width: 48px;
+	height: 48px;
+	background: rgba(217, 78, 42, 0.9);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.video-play-icon svg {
+	width: 24px;
+	height: 24px;
+	fill: white;
+}
+
+.video-carousel-title {
+	margin-top: 0.5rem;
+	color: #f7f0e6;
+	font-weight: 600;
+	font-size: 0.875rem;
+	text-align: center;
+	transition: color 0.3s ease;
+}
+
+.video-carousel-item.active .video-carousel-title {
+	color: #ffb319;
+}
+
+/* ================================
    Loading Animation
    ================================ */
 .loading {

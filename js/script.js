@@ -337,6 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initParallax();
 	initFormValidation();
 	initKeyboardNav();
+	initVideoCarousel();
 
 	// Check font loading again after a delay
 	setTimeout(checkFontLoading, 1000);
@@ -354,6 +355,140 @@ document.addEventListener('visibilitychange', () => {
 		document.body.style.animationPlayState = 'running';
 	}
 });
+
+// ================================
+// Video Carousel Functionality
+// ================================
+
+const videoData = [
+	{
+		id: 'yCgraTyddUI',
+		title: 'Humbug Mountain',
+		description: 'Bible Club 10/24/25',
+	},
+	{
+		id: 'uOkjwisfSnI',
+		title: 'Saturn Returns',
+		description: 'Bible Club 10/24/25',
+	},
+	{
+		id: 'e1nKJh0785s',
+		title: 'The Cuckoo',
+		description: 'Bible Club 10/24/25',
+	},
+	{
+		id: 'dJ0gvZ139Bg',
+		title: 'She',
+		description: 'Bible Club 10/24/25',
+	},
+	{
+		id: 'CP8ruf9fGns',
+		title: 'Sweet Sugar',
+		description: 'Bible Club 10/24/25',
+	},
+	{
+		id: 'oGW-PqW_ZJ0',
+		title: 'Saturn Returns',
+		description: 'Covert Cafe 1/17/25',
+	},
+];
+
+let currentVideoIndex = 0;
+
+function initVideoCarousel() {
+	const carouselContainer = document.getElementById('video-carousel');
+	if (!carouselContainer) return;
+
+	// Generate carousel items
+	const carouselHTML = videoData
+		.map(
+			(video, index) => `
+        <div class="video-carousel-item ${
+			index === 0 ? 'active' : ''
+		}" data-index="${index}" data-video-id="${
+				video.id
+			}" role="button" tabindex="0" aria-label="Watch ${
+				video.title
+			}" onkeypress="handleVideoKeyPress(event, ${index})">
+          <div class="relative">
+            <img 
+              src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" 
+              alt="${video.title}"
+              loading="lazy"
+              class="w-full aspect-video object-cover"
+            />
+            <div class="video-carousel-overlay">
+              <div class="video-play-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="video-carousel-title">${video.title}</div>
+        </div>
+      `,
+		)
+		.join('');
+
+	carouselContainer.innerHTML = carouselHTML;
+
+	// Add click handlers to carousel items
+	const carouselItems = carouselContainer.querySelectorAll(
+		'.video-carousel-item',
+	);
+	carouselItems.forEach((item) => {
+		item.addEventListener('click', handleVideoClick);
+	});
+}
+
+function handleVideoClick(event) {
+	const clickedItem = event.currentTarget;
+	const index = parseInt(clickedItem.getAttribute('data-index'));
+	changeVideo(index);
+}
+
+function handleVideoKeyPress(event, index) {
+	if (event.key === 'Enter' || event.key === ' ') {
+		event.preventDefault();
+		changeVideo(index);
+	}
+}
+
+function changeVideo(index) {
+	if (index === currentVideoIndex) return;
+
+	currentVideoIndex = index;
+	const video = videoData[index];
+
+	// Update main video iframe
+	const mainVideoIframe = document.getElementById('main-video');
+	if (mainVideoIframe) {
+		mainVideoIframe.src = `https://www.youtube.com/embed/${video.id}?autoplay=1`;
+	}
+
+	// Update title and description
+	const videoTitle = document.getElementById('video-title');
+	const videoDescription = document.getElementById('video-description');
+	if (videoTitle) videoTitle.textContent = video.title;
+	if (videoDescription) videoDescription.textContent = video.description;
+
+	// Update carousel active state
+	const carouselItems = document.querySelectorAll('.video-carousel-item');
+	carouselItems.forEach((item, i) => {
+		if (i === index) {
+			item.classList.add('active');
+			// Scroll carousel item into view
+			item.scrollIntoView({
+				behavior: 'smooth',
+				block: 'nearest',
+				inline: 'start',
+			});
+		} else {
+			item.classList.remove('active');
+		}
+	});
+}
 
 // Scroll Effects - Fade in/out all sections with smooth transitions and active nav
 document.addEventListener('DOMContentLoaded', () => {
