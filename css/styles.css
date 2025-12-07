@@ -994,6 +994,11 @@ section {
 	padding-top: 8rem; /* Extra top padding to account for fixed nav */
 }
 
+#about {
+	padding-top: 8rem; /* Extra top padding to account for fixed nav */
+	padding-bottom: 4rem; /* Extra bottom padding to prevent footer overlap */
+}
+
 /* ================================
    Mobile Navigation Layout
    ================================ */
