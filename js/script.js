@@ -286,8 +286,19 @@ function initMobileMenu() {
 		}
 	}
 
-	// Toggle menu on button click
-	mobileMenuButton.addEventListener('click', toggleMenu);
+	// Toggle menu on button click (support both click and touch for mobile)
+	function handleMenuToggle(e) {
+		if (e.type === 'touchend') {
+			e.preventDefault();
+			e.stopPropagation();
+		}
+		toggleMenu();
+	}
+
+	mobileMenuButton.addEventListener('click', handleMenuToggle);
+	mobileMenuButton.addEventListener('touchend', handleMenuToggle, {
+		passive: false,
+	});
 
 	// Close menu when clicking a nav link
 	mobileNavLinks.forEach((link) => {
