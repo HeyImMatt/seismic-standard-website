@@ -39,6 +39,25 @@ nav {
 		background-color 0.3s ease-out;
 }
 
+/* Ensure nav and button stay visible */
+nav {
+	opacity: 1 !important;
+}
+
+/* Ensure button stays above mobile menu */
+#mobile-menu-button {
+	position: relative;
+	z-index: 60 !important; /* Higher than mobile menu z-40 */
+}
+
+/* Ensure icons are visible */
+#mobile-menu-button svg,
+#hamburger-icon,
+#close-icon {
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
 nav.scrolled {
 	background: rgba(46, 34, 34, 0.9) !important;
 	backdrop-filter: blur(10px);
@@ -63,8 +82,8 @@ nav.scrolled #nav-logo-text {
 }
 
 /* Adjust nav link margins when scrolled (text logo) */
-nav.scrolled .hidden.lg\\:flex,
-nav.scrolled .lg\\:hidden.flex {
+nav.scrolled .hidden.md\\:flex,
+nav.scrolled .md\\:hidden.flex {
 	margin-top: 0 !important;
 }
 
@@ -74,8 +93,8 @@ nav.scrolled .nav-link {
 }
 
 /* Target the specific nav containers */
-nav.scrolled div[class*='hidden lg:flex'],
-nav.scrolled div[class*='lg:hidden flex'] {
+nav.scrolled div[class*='hidden md:flex'],
+nav.scrolled div[class*='md:hidden flex'] {
 	margin-top: 0 !important;
 }
 
@@ -101,23 +120,15 @@ nav.scrolled .-mt-7 {
 }
 
 /* Responsive navbar brand sizing */
-@media (max-width: 1024px) {
+/* Keep logo same size at md as lg - only reduce at smaller breakpoints */
+@media (max-width: 767px) {
 	.navbar-brand {
 		font-size: 1.25rem;
 	}
 
 	#nav-logo {
-		max-width: 12rem;
-	}
-}
-
-@media (max-width: 768px) {
-	.navbar-brand {
-		font-size: 1.125rem;
-	}
-
-	#nav-logo {
-		max-width: 10rem;
+		max-width: 16rem; /* Increased size when hamburger menu is active */
+		width: 16rem;
 	}
 }
 
@@ -195,6 +206,58 @@ nav.scrolled .-mt-7 {
 	background-color: rgba(217, 78, 42, 0.2);
 	color: #d94e2a;
 	border-left: 3px solid #d94e2a;
+}
+
+/* Mobile menu styles */
+#mobile-menu {
+	animation: slideDown 0.3s ease-out;
+}
+
+#mobile-menu.hidden {
+	animation: slideUp 0.3s ease-out;
+}
+
+/* Prevent transitions on hamburger/close icons - instant show/hide */
+#hamburger-icon,
+#close-icon {
+	transition: none !important;
+	animation: none !important;
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+#hamburger-icon[style*='display: none'],
+#close-icon[style*='display: none'] {
+	display: none !important;
+}
+
+#hamburger-icon[style*='display: block'],
+#close-icon[style*='display: block'] {
+	display: block !important;
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideUp {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
 }
 
 /* ================================
@@ -1043,27 +1106,31 @@ section {
 /* ================================
    Mobile Navigation Layout
    ================================ */
-@media (max-width: 480px) {
-	/* Stack nav links under logo when SVG logo is active */
-	nav:not(.scrolled) .flex.items-center.justify-between {
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 1rem;
-	}
+/* Hamburger button styling */
+#mobile-menu-button {
+	margin-top: 0;
+	position: relative;
+	z-index: 60 !important; /* Higher than mobile menu z-40 */
+	opacity: 1 !important;
+	visibility: visible !important;
+}
 
-	nav:not(.scrolled) .hidden.lg\\:flex,
-	nav:not(.scrolled) .lg\\:hidden.flex {
-		width: 100% !important;
-		justify-content: flex-start !important;
-	}
+nav:not(.scrolled) #mobile-menu-button {
+	margin-top: -1.75rem; /* Align with SVG logo */
+}
 
-	/* More specific targeting for mobile nav containers */
-	@media (max-width: 480px) {
-		nav:not(.scrolled) div[class*='lg:hidden flex'] {
-			margin-top: -80px !important;
-			margin-left: 20px !important;
-		}
-	}
+nav.scrolled #mobile-menu-button {
+	margin-top: 0; /* Align with text logo */
+}
+
+/* Ensure button and icons are always visible - override any parent effects */
+#mobile-menu-button,
+#mobile-menu-button svg,
+#hamburger-icon,
+#close-icon {
+	opacity: 1 !important;
+	visibility: visible !important;
+	pointer-events: auto !important;
 }
 
 /* ================================
@@ -1154,8 +1221,8 @@ nav.scrolled .flex.items-center.justify-between {
 	gap: 0;
 }
 
-nav.scrolled .hidden.lg\\:flex,
-nav.scrolled .lg\\:hidden.flex {
+nav.scrolled .hidden.md\\:flex,
+nav.scrolled .md\\:hidden.flex {
 	margin-top: 0;
 	width: auto;
 	justify-content: flex-end;

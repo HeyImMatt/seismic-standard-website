@@ -254,18 +254,91 @@ function showSuccessMessage() {
 // Add keyboard navigation for accessibility
 // ================================
 
+// ================================
+// Mobile Menu Toggle
+// ================================
+
+function initMobileMenu() {
+	const mobileMenuButton = document.getElementById('mobile-menu-button');
+	const mobileMenu = document.getElementById('mobile-menu');
+	const hamburgerIcon = document.getElementById('hamburger-icon');
+	const closeIcon = document.getElementById('close-icon');
+	const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+	if (!mobileMenuButton || !mobileMenu || !hamburgerIcon || !closeIcon)
+		return;
+
+	function toggleMenu() {
+		const menuIsOpen = !mobileMenu.classList.contains('hidden');
+
+		if (menuIsOpen) {
+			// Menu is currently open, so close it
+			mobileMenu.classList.add('hidden');
+			hamburgerIcon.style.setProperty('display', 'block', 'important');
+			closeIcon.style.setProperty('display', 'none', 'important');
+			mobileMenuButton.setAttribute('aria-expanded', 'false');
+		} else {
+			// Menu is currently closed, so open it
+			mobileMenu.classList.remove('hidden');
+			closeIcon.style.setProperty('display', 'block', 'important');
+			hamburgerIcon.style.setProperty('display', 'none', 'important');
+			mobileMenuButton.setAttribute('aria-expanded', 'true');
+		}
+	}
+
+	// Toggle menu on button click
+	mobileMenuButton.addEventListener('click', toggleMenu);
+
+	// Close menu when clicking a nav link
+	mobileNavLinks.forEach((link) => {
+		link.addEventListener('click', () => {
+			toggleMenu();
+			// Smooth scroll to section
+			const href = link.getAttribute('href');
+			if (href && href.startsWith('#')) {
+				const target = document.querySelector(href);
+				if (target) {
+					setTimeout(() => {
+						target.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start',
+						});
+					}, 100);
+				}
+			}
+		});
+	});
+
+	// Close menu when clicking outside
+	document.addEventListener('click', (e) => {
+		if (
+			!mobileMenu.contains(e.target) &&
+			!mobileMenuButton.contains(e.target) &&
+			!mobileMenu.classList.contains('hidden')
+		) {
+			toggleMenu();
+		}
+	});
+
+	// Don't close menu on scroll - allow scrolling with menu open
+}
+
 function initKeyboardNav() {
 	document.addEventListener('keydown', (e) => {
 		// Escape key closes mobile menu
 		if (e.key === 'Escape') {
 			const mobileMenu = document.getElementById('mobile-menu');
-			const hamburgerOpen = document.querySelector('.hamburger-open');
-			const hamburgerClose = document.querySelector('.hamburger-close');
+			const hamburgerIcon = document.getElementById('hamburger-icon');
+			const closeIcon = document.getElementById('close-icon');
+			const mobileMenuButton =
+				document.getElementById('mobile-menu-button');
 
 			if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
 				mobileMenu.classList.add('hidden');
-				hamburgerOpen.classList.remove('hidden');
-				hamburgerClose.classList.add('hidden');
+				hamburgerIcon.classList.remove('hidden');
+				closeIcon.classList.add('hidden');
+				mobileMenuButton.setAttribute('aria-expanded', 'false');
+				document.body.style.overflow = '';
 			}
 		}
 	});
@@ -355,6 +428,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	initParallax();
 	initFormValidation();
 	initKeyboardNav();
+	initMobileMenu();
 	initVideoCarousel();
 
 	// Check font loading again after a delay

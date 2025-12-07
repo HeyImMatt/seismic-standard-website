@@ -64,22 +64,44 @@
                     </a>
                 </div>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden lg:flex space-x-5 items-center -mt-7">
+                <!-- Desktop/Tablet Navigation -->
+                <div class="hidden md:flex space-x-5 items-center -mt-7">
                     <a href="#watch" class="nav-link">Watch</a>
                     <a href="#shows" class="nav-link">Shows</a>
                     <a href="#downloads" class="nav-link">Downloads</a>
                     <a href="#about" class="nav-link">About</a>
                 </div>
 
-                <!-- Tablet/Mobile Navigation -->
-                <div class="lg:hidden flex space-x-3 items-center -mt-7">
-                    <a href="#watch" class="nav-link text-sm">Watch</a>
-                    <a href="#shows" class="nav-link text-sm">Shows</a>
-                    <a href="#downloads" class="nav-link text-sm">Downloads</a>
-                    <a href="#about" class="nav-link text-sm">About</a>
-                </div>
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-button"
+                    class="md:hidden flex items-center justify-center w-10 h-10 text-brand-cream hover:text-brand-orange transition-colors focus:outline-none"
+                    aria-label="Toggle menu" aria-expanded="false">
+                    <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6" style="display: none;" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="md:hidden hidden fixed top-0 left-0 right-0 bg-brand-brown/95 backdrop-blur-md z-40 pt-20 pb-6 shadow-lg">
+            <div class="container mx-auto px-4 sm:px-6">
+                <nav class="flex flex-col space-y-2">
+                    <a href="#watch" class="mobile-nav-link">Watch</a>
+                    <a href="#shows" class="mobile-nav-link">Shows</a>
+                    <a href="#downloads" class="mobile-nav-link">Downloads</a>
+                    <a href="#about" class="mobile-nav-link">About</a>
+                </nav>
+            </div>
+        </div>
+        </div>
         </div>
 
     </nav>
