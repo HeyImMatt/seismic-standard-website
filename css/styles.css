@@ -53,8 +53,9 @@ nav.scrolled #nav-logo-text {
 	display: block;
 	color: #ffb319;
 	font-family: var(--logo-font);
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	font-weight: 400;
+	white-space: nowrap;
 }
 
 #nav-logo-text {
@@ -62,8 +63,8 @@ nav.scrolled #nav-logo-text {
 }
 
 /* Adjust nav link margins when scrolled (text logo) */
-nav.scrolled .hidden.md\\:flex,
-nav.scrolled .md\\:hidden.flex {
+nav.scrolled .hidden.lg\\:flex,
+nav.scrolled .lg\\:hidden.flex {
 	margin-top: 0 !important;
 }
 
@@ -73,8 +74,8 @@ nav.scrolled .nav-link {
 }
 
 /* Target the specific nav containers */
-nav.scrolled div[class*='hidden md:flex'],
-nav.scrolled div[class*='md:hidden flex'] {
+nav.scrolled div[class*='hidden lg:flex'],
+nav.scrolled div[class*='lg:hidden flex'] {
 	margin-top: 0 !important;
 }
 
@@ -99,6 +100,27 @@ nav.scrolled .-mt-7 {
 	letter-spacing: 0.02em;
 }
 
+/* Responsive navbar brand sizing */
+@media (max-width: 1024px) {
+	.navbar-brand {
+		font-size: 1.25rem;
+	}
+
+	#nav-logo {
+		max-width: 12rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.navbar-brand {
+		font-size: 1.125rem;
+	}
+
+	#nav-logo {
+		max-width: 10rem;
+	}
+}
+
 .navbar-brand:hover {
 	color: #d94e2a;
 	transform: scale(1.05);
@@ -112,6 +134,15 @@ nav.scrolled .-mt-7 {
 	position: relative;
 	transition: color 0.3s ease;
 	outline: none;
+	font-size: 1rem;
+}
+
+/* Responsive nav link sizing */
+@media (max-width: 1024px) {
+	.nav-link {
+		font-size: 0.875rem;
+		padding: 0.375rem 0;
+	}
 }
 
 .nav-link:hover,
@@ -139,6 +170,8 @@ nav.scrolled .-mt-7 {
 
 .nav-link.active {
 	color: #d94e2a;
+	font-size: inherit;
+	font-weight: 500;
 }
 
 .mobile-nav-link {
@@ -266,6 +299,16 @@ nav.scrolled .-mt-7 {
 	border-left: 4px solid #d94e2a;
 }
 
+/* Show card link styling */
+#shows a {
+	text-decoration: none;
+	color: inherit;
+}
+
+#shows a:hover {
+	text-decoration: none;
+}
+
 .show-card:hover {
 	transform: translateY(-8px) scale(1.02);
 	box-shadow: 0 12px 24px rgba(217, 78, 42, 0.2);
@@ -280,6 +323,8 @@ nav.scrolled .-mt-7 {
 	background: linear-gradient(135deg, #f7f0e6, #fff8e8);
 	border-radius: 0.5rem;
 	min-width: 80px;
+	flex-shrink: 0;
+	width: 80px;
 }
 
 /* ================================
@@ -982,8 +1027,17 @@ section {
 	padding-top: 8rem; /* Extra top padding to account for fixed nav */
 }
 
-#listen {
+#shows {
 	padding-top: 8rem; /* Extra top padding to account for fixed nav */
+}
+
+#downloads {
+	padding-top: 8rem; /* Extra top padding to account for fixed nav */
+}
+
+#about {
+	padding-top: 8rem; /* Extra top padding to account for fixed nav */
+	padding-bottom: 4rem; /* Extra bottom padding to prevent footer overlap */
 }
 
 /* ================================
@@ -997,15 +1051,15 @@ section {
 		gap: 1rem;
 	}
 
-	nav:not(.scrolled) .hidden.md\\:flex,
-	nav:not(.scrolled) .md\\:hidden.flex {
+	nav:not(.scrolled) .hidden.lg\\:flex,
+	nav:not(.scrolled) .lg\\:hidden.flex {
 		width: 100% !important;
 		justify-content: flex-start !important;
 	}
 
 	/* More specific targeting for mobile nav containers */
 	@media (max-width: 480px) {
-		nav:not(.scrolled) div[class*='md:hidden flex'] {
+		nav:not(.scrolled) div[class*='lg:hidden flex'] {
 			margin-top: -80px !important;
 			margin-left: 20px !important;
 		}
@@ -1016,33 +1070,33 @@ section {
    Listen Section Mobile Adjustments
    ================================ */
 @media (max-width: 425px) {
-	/* Remove container styling for listen tracks */
-	#listen .relative.group {
+	/* Remove container styling for downloads tracks */
+	#downloads .relative.group {
 		background: none !important;
 		border: none !important;
 		padding: 0 !important;
 		box-shadow: none !important;
 	}
 
-	#listen .relative.group .absolute {
+	#downloads .relative.group .absolute {
 		display: none !important;
 	}
 
-	#listen .relative.bg-brand-brown {
+	#downloads .relative.bg-brand-brown {
 		background: transparent !important;
 		border: none !important;
 		padding: 0 !important;
 	}
 
 	/* Adjust iframe sizing for mobile */
-	#listen iframe {
+	#downloads iframe {
 		width: 100% !important;
 		max-width: 350px !important;
 		height: 350px !important;
 	}
 
 	/* Center the content */
-	#listen .flex.justify-center {
+	#downloads .flex.justify-center {
 		justify-content: center !important;
 	}
 }
@@ -1100,8 +1154,8 @@ nav.scrolled .flex.items-center.justify-between {
 	gap: 0;
 }
 
-nav.scrolled .hidden.md\\:flex,
-nav.scrolled .md\\:hidden.flex {
+nav.scrolled .hidden.lg\\:flex,
+nav.scrolled .lg\\:hidden.flex {
 	margin-top: 0;
 	width: auto;
 	justify-content: flex-end;

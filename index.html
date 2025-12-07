@@ -59,21 +59,25 @@
                 <!-- Logo -->
                 <div class="navbar-brand">
                     <a href="#" class="block">
-                        <div id="nav-logo" class="w-80"></div>
+                        <div id="nav-logo" class="w-64"></div>
                         <div id="nav-logo-text" class="hidden">Seismic Standard</div>
                     </a>
                 </div>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex space-x-8 items-center -mt-7">
+                <div class="hidden lg:flex space-x-5 items-center -mt-7">
                     <a href="#watch" class="nav-link">Watch</a>
-                    <a href="#listen" class="nav-link">Listen</a>
+                    <a href="#shows" class="nav-link">Shows</a>
+                    <a href="#downloads" class="nav-link">Downloads</a>
+                    <a href="#about" class="nav-link">About</a>
                 </div>
 
-                <!-- Mobile Navigation -->
-                <div class="md:hidden flex space-x-6 items-center -mt-7">
-                    <a href="#watch" class="nav-link">Watch</a>
-                    <a href="#listen" class="nav-link">Listen</a>
+                <!-- Tablet/Mobile Navigation -->
+                <div class="lg:hidden flex space-x-3 items-center -mt-7">
+                    <a href="#watch" class="nav-link text-sm">Watch</a>
+                    <a href="#shows" class="nav-link text-sm">Shows</a>
+                    <a href="#downloads" class="nav-link text-sm">Downloads</a>
+                    <a href="#about" class="nav-link text-sm">About</a>
                 </div>
             </div>
         </div>
@@ -103,13 +107,13 @@
                             <div class="flex flex-col items-end gap-4">
                                 <!-- Date/Time -->
                                 <div class="text-brand-cream font-semibold text-lg">
-                                    <span class="text-brand-yellow">FRIDAY</span> JAN 16 | 8PM
+                                    <span class="text-brand-yellow">FRIDAY</span> JAN 09 | 8PM
                                 </div>
                                 <!-- Venue -->
                                 <div>
-                                    <a href="https://share.google/8AXbIhTFyd5CX3d1Q" target="_blank"
+                                    <a href="https://maps.app.goo.gl/T19bbVBNbqUxWpaz5" target="_blank"
                                         class="text-xl font-bold text-brand-cream hover:text-brand-orange transition-colors">
-                                        Firkin Tavern
+                                        Haymaker Bar & Eatery
                                     </a>
                                 </div>
                             </div>
@@ -123,6 +127,10 @@
     <!-- Watch Section -->
     <section id="watch" class="pt-20 relative z-10">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Title -->
+            <div class="mb-12 fade-in-up delay-100">
+                <h2 class="section-title">Watch</h2>
+            </div>
 
             <div class="mb-10 fade-in-up delay-100">
                 <div class="max-w-4xl mx-auto">
@@ -176,9 +184,162 @@
         </div>
     </section>
 
-    <!-- Listen Section -->
-    <section id="listen" class="pt-20 relative z-10">
+    <!-- Shows Section -->
+    <section id="shows" class="pt-20 relative z-10">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Section Title -->
+                <div class="mb-12 fade-in-up delay-100">
+                    <h2 class="section-title">Upcoming Shows</h2>
+                </div>
+
+                <!-- Shows List -->
+                <div class="space-y-6 mb-16">
+                    <!-- Show 1 -->
+                    <div class="fade-in-up delay-100">
+                        <a href="https://maps.app.goo.gl/T19bbVBNbqUxWpaz5" target="_blank"
+                            class="block cursor-pointer">
+                            <div class="relative group">
+                                <div
+                                    class="absolute -inset-1 bg-brand-orange rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
+                                </div>
+                                <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-orange/20">
+                                    <div class="flex flex-row items-center gap-4">
+                                        <div class="show-date">
+                                            <div class="text-brand-orange font-bold text-2xl">09</div>
+                                            <div class="text-brand-brown font-bold text-xl">JAN</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h3 class="text-xl font-bold text-brand-orange mb-2">
+                                                Haymaker Bar & Eatery
+                                            </h3>
+                                            <p class="text-brand-cream mb-1">Friday, 8-10 PM</p>
+                                            <p class="text-brand-warm-gray text-sm">Free</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Show 2 -->
+                    <div class="fade-in-up delay-200">
+                        <a href="https://maps.app.goo.gl/SUPuNFSJYDUMpaiK8" target="_blank"
+                            class="block cursor-pointer">
+                            <div class="relative group">
+                                <div
+                                    class="absolute -inset-1 bg-brand-yellow rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
+                                </div>
+                                <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-yellow/20">
+                                    <div class="flex flex-row items-center gap-4">
+                                        <div class="show-date">
+                                            <div class="text-brand-yellow font-bold text-2xl">16</div>
+                                            <div class="text-brand-brown font-bold text-xl">JAN</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h3 class="text-xl font-bold text-brand-yellow mb-2">
+                                                Firkin Tavern
+                                            </h3>
+                                            <p class="text-brand-cream mb-1">Friday, 8-11PM</p>
+                                            <p class="text-brand-warm-gray text-sm">Free</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Show 3 -->
+                    <div class="fade-in-up delay-300">
+                        <a href="https://maps.app.goo.gl/vechcTqQtPwhamS16" target="_blank"
+                            class="block cursor-pointer">
+                            <div class="relative group">
+                                <div
+                                    class="absolute -inset-1 bg-brand-orange rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
+                                </div>
+                                <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-orange/20">
+                                    <div class="flex flex-row items-center gap-4">
+                                        <div class="show-date">
+                                            <div class="text-brand-orange font-bold text-2xl">3</div>
+                                            <div class="text-brand-brown font-bold text-xl">FEB</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h3 class="text-xl font-bold text-brand-orange mb-2">
+                                                Double Mountain Brewery - Overlook
+                                            </h3>
+                                            <p class="text-brand-cream mb-1">Tuesday, 6-8 PM</p>
+                                            <p class="text-brand-warm-gray text-sm">Free</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Show 4 -->
+                    <div class="fade-in-up delay-300">
+                        <a href="https://maps.app.goo.gl/tHnnevjZBEctdTh86" target="_blank"
+                            class="block cursor-pointer">
+                            <div class="relative group">
+                                <div
+                                    class="absolute -inset-1 bg-brand-yellow rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
+                                </div>
+                                <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-yellow/20">
+                                    <div class="flex flex-row items-center gap-4">
+                                        <div class="show-date">
+                                            <div class="text-brand-yellow font-bold text-2xl">14</div>
+                                            <div class="text-brand-brown font-bold text-xl">MAR</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h3 class="text-xl font-bold text-brand-yellow mb-2">
+                                                Threshold Brewery
+                                            </h3>
+                                            <p class="text-brand-cream mb-1">Saturday, 6:30-8:30 PM</p>
+                                            <p class="text-brand-warm-gray text-sm">Free</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Show 5 -->
+                    <div class="fade-in-up delay-300">
+                        <a href="https://maps.app.goo.gl/bp2EJdwdBCPnow8o7" target="_blank"
+                            class="block cursor-pointer">
+                            <div class="relative group">
+                                <div
+                                    class="absolute -inset-1 bg-brand-orange rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
+                                </div>
+                                <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-orange/20">
+                                    <div class="flex flex-row items-center gap-4">
+                                        <div class="show-date">
+                                            <div class="text-brand-orange font-bold text-2xl">28</div>
+                                            <div class="text-brand-brown font-bold text-xl">MAR</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h3 class="text-xl font-bold text-brand-orange mb-2">
+                                                Double Mountain Brewery - Woodstock
+                                            </h3>
+                                            <p class="text-brand-cream mb-1">Saturday, 6-8 PM</p>
+                                            <p class="text-brand-warm-gray text-sm">Free</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads Section -->
+    <section id="downloads" class="pt-20 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Title -->
+            <div class="mb-12 fade-in-up delay-100">
+                <h2 class="section-title">Downloads</h2>
+            </div>
 
             <!-- Track Grid -->
             <div class="grid md:grid-cols-2 gap-8 mb-16">
@@ -220,6 +381,41 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="pt-20 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Section Title -->
+                <div class="mb-12 fade-in-up delay-100">
+                    <h2 class="section-title">About</h2>
+                </div>
+
+                <!-- About Content -->
+                <div class="fade-in-up delay-200">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-brand-orange rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
+                        </div>
+                        <div class="relative bg-brand-brown rounded-lg p-8 border border-brand-orange/20">
+                            <div class="bio-content text-brand-cream">
+                                <p>Seismic Standard brings an infectious blend of folk warmth and indie rock spirit to
+                                    Portland's music scene. Their sound is anchored by lush harmonies, a mix of acoustic
+                                    and electric tones and the rattle of an old-timey washboard outfitted with all the
+                                    bells and whistles.</p>
+                                <p>The trio of Shawn Henderson, Matt McFarland and Giued Hatch
+                                    craft original songs and creative covers that mosey easily between laidback grooves
+                                    and rowdy, foot-stomping fun.</p>
+                                <p>Seismic Standard's songwriting blends the sounds of
+                                    modern folk heroes like Fruitbats, Lumnieers, and M. Ward, with some nostalgic 90s
+                                    alt-rock edge for a result that is catchy and instantly familiar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-12 relative z-10">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -251,6 +447,13 @@
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.5" />
                             <path d="M6 8.5v7h8.5l3.5-7H6z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:seismicstandard@gmail.com"
+                        class="text-brand-orange hover:text-brand-yellow transition-colors" aria-label="Email">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                         </svg>
                     </a>
                 </div>
