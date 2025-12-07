@@ -139,6 +139,8 @@ nav.scrolled .-mt-7 {
 
 .nav-link.active {
 	color: #d94e2a;
+	font-size: inherit;
+	font-weight: 500;
 }
 
 .mobile-nav-link {
@@ -280,6 +282,8 @@ nav.scrolled .-mt-7 {
 	background: linear-gradient(135deg, #f7f0e6, #fff8e8);
 	border-radius: 0.5rem;
 	min-width: 80px;
+	flex-shrink: 0;
+	width: 80px;
 }
 
 /* ================================
@@ -979,6 +983,10 @@ section {
    Section Spacing Adjustments
    ================================ */
 #watch {
+	padding-top: 8rem; /* Extra top padding to account for fixed nav */
+}
+
+#shows {
 	padding-top: 8rem; /* Extra top padding to account for fixed nav */
 }
 
