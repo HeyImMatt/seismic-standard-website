@@ -268,6 +268,16 @@ nav.scrolled .-mt-7 {
 	border-left: 4px solid #d94e2a;
 }
 
+/* Show card link styling */
+#shows a {
+	text-decoration: none;
+	color: inherit;
+}
+
+#shows a:hover {
+	text-decoration: none;
+}
+
 .show-card:hover {
 	transform: translateY(-8px) scale(1.02);
 	box-shadow: 0 12px 24px rgba(217, 78, 42, 0.2);
