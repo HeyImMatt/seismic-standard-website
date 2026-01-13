@@ -472,6 +472,13 @@ document.addEventListener('visibilitychange', () => {
 
 const videoData = [
 	{
+		id: '6RFNcm8dDKo', // YouTube ID for thumbnail
+		driveId: '1g0bEgl78ZVa2doU1vg4NxWgI12Bh503l', // Google Drive ID for embedding
+		title: 'Eleanor Rigby',
+		description: 'Haymaker Bar 1/9/2026',
+		source: 'googledrive', // 'youtube' or 'googledrive'
+	},
+	{
 		id: 'yCgraTyddUI',
 		title: 'Humbug Mountain',
 		description: 'Bible Club 10/24/25',
@@ -571,10 +578,54 @@ function changeVideo(index) {
 	currentVideoIndex = index;
 	const video = videoData[index];
 
-	// Update main video iframe
-	const mainVideoIframe = document.getElementById('main-video');
-	if (mainVideoIframe) {
-		mainVideoIframe.src = `https://www.youtube.com/embed/${video.id}?autoplay=1`;
+	// Update main video container
+	const mainVideoContainer = document.getElementById('main-video-container');
+	if (mainVideoContainer) {
+		// Check video source type
+		if (video.source === 'googledrive' && video.driveId) {
+			// Show Google Drive embed directly
+			mainVideoContainer.innerHTML = `
+				<iframe id="main-video" width="1224" height="689"
+					src="https://drive.google.com/file/d/${video.driveId}/preview" 
+					title="${video.title}"
+					frameborder="0"
+					allow="autoplay"
+					allowfullscreen
+					class="w-full h-full"></iframe>
+			`;
+		} else if (video.embeddable === false) {
+			// Show thumbnail link for non-embeddable YouTube videos
+			mainVideoContainer.innerHTML = `
+				<a href="https://youtu.be/${video.id}" target="_blank" 
+					class="relative w-full h-full block group/thumb">
+					<img 
+						src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" 
+						alt="${video.title}"
+						class="w-full h-full object-cover rounded-lg"
+						onerror="this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg'"
+					/>
+					<div class="absolute inset-0 bg-black/30 group-hover/thumb:bg-black/20 transition-colors rounded-lg flex items-center justify-center">
+						<div class="w-20 h-20 bg-brand-orange/90 group-hover/thumb:bg-brand-orange rounded-full flex items-center justify-center transition-all group-hover/thumb:scale-110">
+							<svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M8 5v14l11-7z"/>
+							</svg>
+						</div>
+					</div>
+				</a>
+			`;
+		} else {
+			// Show YouTube iframe for embeddable videos
+			mainVideoContainer.innerHTML = `
+				<iframe id="main-video" width="1224" height="689"
+					src="https://www.youtube.com/embed/${video.id}?autoplay=1" 
+					title="${video.title}"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerpolicy="strict-origin-when-cross-origin" 
+					allowfullscreen
+					class="w-full h-full"></iframe>
+			`;
+		}
 	}
 
 	// Update title and description
