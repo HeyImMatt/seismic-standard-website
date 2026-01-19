@@ -37,6 +37,8 @@ nav {
 	box-shadow: none !important;
 	transition: opacity 0.3s ease-out, transform 0.3s ease-out,
 		background-color 0.3s ease-out;
+	position: relative;
+	z-index: 50; /* Ensure nav stays above mobile menu */
 }
 
 /* Ensure nav and button stay visible */
@@ -117,6 +119,14 @@ nav.scrolled .-mt-7 {
 	text-decoration: none;
 	transition: all 0.3s ease;
 	letter-spacing: 0.02em;
+	position: relative;
+	z-index: 60 !important; /* Higher than mobile menu z-40 to stay visible */
+}
+
+/* Ensure nav container stays visible above mobile menu */
+nav > div {
+	position: relative;
+	z-index: 50;
 }
 
 /* Responsive navbar brand sizing */
@@ -211,6 +221,19 @@ nav.scrolled .-mt-7 {
 /* Mobile menu styles */
 #mobile-menu {
 	animation: slideDown 0.3s ease-out;
+	min-height: 100vh; /* Ensure full viewport height coverage */
+	height: 100vh; /* Explicit full height */
+}
+
+/* Default: no extra margin for mobile menu nav */
+#mobile-menu nav {
+	margin-top: 0;
+}
+
+/* Add extra margin when SVG logo is visible (when nav is not scrolled) */
+/* The scroll threshold is windowHeight * 0.5, so we add margin when not scrolled */
+nav:not(.scrolled) #mobile-menu nav {
+	margin-top: 3.5rem; /* Push nav items down when SVG logo is showing - increased for more space */
 }
 
 #mobile-menu.hidden {
