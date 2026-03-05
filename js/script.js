@@ -431,6 +431,7 @@ function updateSVGFonts(fontFamily) {
 // ================================
 
 document.addEventListener('DOMContentLoaded', async () => {
+	document.getElementById('copyright-year').textContent = new Date().getFullYear();
 	await checkFontLoading();
 	insertLogos();
 	initScrollAnimations();
