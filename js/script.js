@@ -747,7 +747,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				translateY = -fadeProgress * 120; // Increased movement
 			} else {
 				// Section is in viewport - fade in as it comes into view
-				const fadeDistance = windowHeight * 1.0; // Increased fade distance
+				// Use section height (capped at viewport) so short sections can reach full opacity
+				const fadeDistance = Math.min(sectionHeight, windowHeight);
 
 				// Calculate fade progress based on how much of section is visible
 				const visibleHeight =
