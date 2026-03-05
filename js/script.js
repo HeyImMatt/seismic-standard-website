@@ -780,4 +780,47 @@ document.addEventListener('DOMContentLoaded', () => {
 			ticking = true;
 		}
 	});
+
+	// ================================
+	// Show Date Management
+	// Auto-hide past shows and sync the Next Show hero strip
+	// ================================
+	(function () {
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+
+		const rows = document.querySelectorAll('.show-row[data-show-date]');
+		let nextShow = null;
+
+		rows.forEach(function (row) {
+			const showDate = new Date(row.dataset.showDate + 'T00:00:00');
+			if (showDate < today) {
+				row.style.display = 'none';
+			} else if (!nextShow) {
+				nextShow = row;
+			}
+		});
+
+		// Show fallback message if no upcoming shows remain
+		const noShows = document.getElementById('no-shows-message');
+		if (!nextShow && noShows) noShows.classList.remove('hidden');
+
+		// Update the Next Show strip with the first upcoming show
+		const strip = document.querySelector('.next-show-strip');
+		if (!nextShow) {
+			if (strip) strip.style.display = 'none';
+			return;
+		}
+
+		const link = document.getElementById('next-show-link');
+		if (link) link.href = nextShow.dataset.showUrl;
+
+		const dateEl = document.querySelector('.next-show-date');
+		const timeEl = document.querySelector('.next-show-time');
+		const venueEl = document.querySelector('.next-show-venue');
+
+		if (dateEl) dateEl.textContent = nextShow.dataset.showDisplayDate;
+		if (timeEl) timeEl.textContent = nextShow.dataset.showTime;
+		if (venueEl) venueEl.textContent = nextShow.dataset.showVenue;
+	})();
 });

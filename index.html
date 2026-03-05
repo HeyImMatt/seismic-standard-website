@@ -114,7 +114,7 @@
 
         <!-- Next Show Strip -->
         <div class="absolute bottom-0 left-0 right-0 next-show-strip">
-            <a href="https://maps.app.goo.gl/tHnnevjZBEctdTh86" target="_blank" class="block">
+            <a id="next-show-link" href="https://maps.app.goo.gl/tHnnevjZBEctdTh86" target="_blank" class="block">
                 <div class="container mx-auto px-6 lg:px-8 py-5 flex flex-wrap items-center gap-x-6 gap-y-2">
                     <span class="next-show-label basis-full sm:basis-auto">Next Show</span>
                     <span class="next-show-date">SAT MAR 14</span>
@@ -191,7 +191,9 @@
             </div>
 
             <div class="show-listing fade-in-up delay-200">
-                <a href="https://maps.app.goo.gl/tHnnevjZBEctdTh86" target="_blank" class="show-row group">
+                <a href="https://maps.app.goo.gl/tHnnevjZBEctdTh86" target="_blank" class="show-row group"
+                    data-show-date="2026-03-14" data-show-display-date="SAT MAR 14" data-show-time="6:30 PM"
+                    data-show-venue="Threshold Brewery" data-show-url="https://maps.app.goo.gl/tHnnevjZBEctdTh86">
                     <div class="show-date-col">
                         <span class="show-day">14</span>
                         <span class="show-month">MAR</span>
@@ -199,13 +201,16 @@
                     <div class="show-info-col">
                         <span class="show-venue group-hover:text-brand-orange transition-colors duration-200">Threshold
                             Brewery</span>
-                        <span class="show-details">Saturday · 6:30–8:30 PM · Free</span>
+                        <span class="show-details">Saturday · 6:30-8:30 PM · Free · All Ages</span>
                     </div>
                     <svg class="show-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                 </a>
-                <a href="https://maps.app.goo.gl/bp2EJdwdBCPnow8o7" target="_blank" class="show-row group">
+                <a href="https://maps.app.goo.gl/bp2EJdwdBCPnow8o7" target="_blank" class="show-row group"
+                    data-show-date="2026-05-28" data-show-display-date="THU MAY 28" data-show-time="6:00 PM"
+                    data-show-venue="Double Mountain Brewery — Woodstock"
+                    data-show-url="https://maps.app.goo.gl/bp2EJdwdBCPnow8o7">
                     <div class="show-date-col">
                         <span class="show-day">28</span>
                         <span class="show-month">MAY</span>
@@ -213,12 +218,14 @@
                     <div class="show-info-col">
                         <span class="show-venue group-hover:text-brand-orange transition-colors duration-200">Double
                             Mountain Brewery — Woodstock</span>
-                        <span class="show-details">Thursday · 6–8 PM · Free</span>
+                        <span class="show-details">Thursday · 6-8 PM · Free · All Ages</span>
                     </div>
                     <svg class="show-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                 </a>
+                <p id="no-shows-message" class="hidden text-brand-warm-gray py-6 text-sm">No upcoming shows scheduled.
+                    Check back soon.</p>
             </div>
 
         </div>
