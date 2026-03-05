@@ -431,6 +431,7 @@ function updateSVGFonts(fontFamily) {
 // ================================
 
 document.addEventListener('DOMContentLoaded', async () => {
+	document.getElementById('copyright-year').textContent = new Date().getFullYear();
 	await checkFontLoading();
 	insertLogos();
 	initScrollAnimations();
@@ -747,7 +748,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				translateY = -fadeProgress * 120; // Increased movement
 			} else {
 				// Section is in viewport - fade in as it comes into view
-				const fadeDistance = windowHeight * 1.0; // Increased fade distance
+				// Use section height (capped at viewport) so short sections can reach full opacity
+				const fadeDistance = Math.min(sectionHeight, windowHeight);
 
 				// Calculate fade progress based on how much of section is visible
 				const visibleHeight =
@@ -778,4 +780,47 @@ document.addEventListener('DOMContentLoaded', () => {
 			ticking = true;
 		}
 	});
+
+	// ================================
+	// Show Date Management
+	// Auto-hide past shows and sync the Next Show hero strip
+	// ================================
+	(function () {
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+
+		const rows = document.querySelectorAll('.show-row[data-show-date]');
+		let nextShow = null;
+
+		rows.forEach(function (row) {
+			const showDate = new Date(row.dataset.showDate + 'T00:00:00');
+			if (showDate < today) {
+				row.style.display = 'none';
+			} else if (!nextShow) {
+				nextShow = row;
+			}
+		});
+
+		// Show fallback message if no upcoming shows remain
+		const noShows = document.getElementById('no-shows-message');
+		if (!nextShow && noShows) noShows.classList.remove('hidden');
+
+		// Update the Next Show strip with the first upcoming show
+		const strip = document.querySelector('.next-show-strip');
+		if (!nextShow) {
+			if (strip) strip.style.display = 'none';
+			return;
+		}
+
+		const link = document.getElementById('next-show-link');
+		if (link) link.href = nextShow.dataset.showUrl;
+
+		const dateEl = document.querySelector('.next-show-date');
+		const timeEl = document.querySelector('.next-show-time');
+		const venueEl = document.querySelector('.next-show-venue');
+
+		if (dateEl) dateEl.textContent = nextShow.dataset.showDisplayDate;
+		if (timeEl) timeEl.textContent = nextShow.dataset.showTime;
+		if (venueEl) venueEl.textContent = nextShow.dataset.showVenue;
+	})();
 });

@@ -7,27 +7,28 @@
     <meta name="description" content="Seismic Standard - Indie Folk Trio">
     <title>Seismic Standard</title>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Custom Font Preload -->
     <link rel="preload" href="fonts/chinese.sthupo.ttf" as="font" type="font/ttf" crossorigin="anonymous">
     <link rel="preconnect" href="." crossorigin="anonymous">
 
-    <!-- Custom Styles -->
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
+                        // Active
                         'brand-orange': '#D94E2A',
                         'brand-yellow': '#FFB319',
                         'brand-brown': '#2E2222',
                         'brand-cream': '#F7F0E6',
+                        'brand-charcoal': '#3D3634',
+                        'brand-warm-gray': '#9B8F7E',
+                        // Reserved — not currently used
                         'brand-cream-light': '#FFF8E8',
+                        'brand-plum': '#5C3A4A',
                         'brand-sage': '#6B7F6E',
                         'brand-olive': '#5C5C3D',
                         'brand-moss': '#4A5D3F',
@@ -35,11 +36,8 @@
                         'brand-blue': '#5B7A8E',
                         'brand-slate': '#4A5B6B',
                         'brand-denim': '#627D96',
-                        'brand-plum': '#5C3A4A',
                         'brand-wine': '#6B2E3E',
                         'brand-mauve': '#8B6A6F',
-                        'brand-warm-gray': '#9B8F7E',
-                        'brand-charcoal': '#3D3634',
                     },
                     fontFamily: {
                         'logo': ['Chinese Sthupo', 'sans-serif'],
@@ -50,29 +48,29 @@
     </script>
 </head>
 
-<body class="text-brand-cream min-h-screen"
-    style="background: linear-gradient(to bottom right, #2E2222, #3D3634, #5C3A4A); background-attachment: fixed; background-size: cover;">
+<body class="text-brand-cream min-h-screen">
+
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between py-4">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between py-5">
                 <!-- Logo -->
                 <div class="navbar-brand">
                     <a href="#" class="block">
-                        <div id="nav-logo" class="w-64"></div>
+                        <div id="nav-logo" class="w-56"></div>
                         <div id="nav-logo-text" class="hidden">Seismic Standard</div>
                     </a>
                 </div>
 
-                <!-- Desktop/Tablet Navigation -->
-                <div class="hidden md:flex space-x-5 items-center -mt-7">
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-8">
                     <a href="#watch" class="nav-link">Watch</a>
                     <a href="#shows" class="nav-link">Shows</a>
-                    <a href="#tracks" class="nav-link">Tracks</a>
+                    <a href="#tracks" class="nav-link">Listen</a>
                     <a href="#about" class="nav-link">About</a>
                 </div>
 
-                <!-- Mobile Hamburger Button -->
+                <!-- Mobile Menu Button -->
                 <button id="mobile-menu-button"
                     class="md:hidden flex items-center justify-center w-10 h-10 text-brand-cream hover:text-brand-orange transition-colors focus:outline-none"
                     aria-label="Toggle menu" aria-expanded="false">
@@ -91,312 +89,248 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu"
-            class="md:hidden hidden fixed top-0 left-0 right-0 bottom-0 h-screen bg-brand-brown/95 backdrop-blur-md z-40 pt-20 pb-6 shadow-lg">
-            <div class="container mx-auto px-4 sm:px-6">
-                <nav class="flex flex-col space-y-2">
+            class="md:hidden hidden fixed top-0 left-0 right-0 bottom-0 h-screen bg-brand-brown/95 backdrop-blur-md z-40 pt-20 pb-6">
+            <div class="container mx-auto px-6">
+                <nav class="flex flex-col">
                     <a href="#watch" class="mobile-nav-link">Watch</a>
                     <a href="#shows" class="mobile-nav-link">Shows</a>
-                    <a href="#tracks" class="mobile-nav-link">Tracks</a>
+                    <a href="#tracks" class="mobile-nav-link">Listen</a>
                     <a href="#about" class="mobile-nav-link">About</a>
                 </nav>
             </div>
         </div>
-        </div>
-        </div>
-
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Band Photo with Overlay -->
-        <div class="relative w-full h-full fade-in-up">
-            <!-- Band Photo -->
-            <div class="relative group w-full h-full">
-                <div
-                    class="absolute -inset-1 bg-gradient-to-r from-brand-orange to-brand-yellow rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-500">
-                </div>
-                <img src="images/band-photo.jpg" alt="Seismic Standard Band"
-                    class="relative rounded-lg shadow-2xl w-full h-full object-cover object-[50%_35%]">
+    <section class="hero-section">
+        <img src="images/band-photo.jpg" alt="Seismic Standard"
+            class="absolute inset-0 w-full h-full object-cover object-[50%_35%]">
+        <div class="hero-overlay absolute inset-0"></div>
 
-                <!-- Dark Overlay for Text Readability -->
-                <div class="absolute inset-0 bg-black/45 rounded-lg"></div>
+        <!-- Centered Logo -->
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="logo-container hero-logo w-72 sm:w-[22rem] md:w-[520px]"></div>
+        </div>
 
-                <!-- Next Show Overlay at Bottom Right -->
-                <div class="absolute bottom-8 right-8 w-auto max-w-sm fade-in-up delay-300">
-                    <div class="text-right hero-overlay-text">
-                        <div class="bg-brand-brown/70 backdrop-blur-sm rounded-lg p-4 border border-brand-orange/30">
-                            <h2 class="text-2xl font-bold text-brand-orange mb-4">Next Show</h2>
-                            <div class="flex flex-col items-end gap-4">
-                                <!-- Date/Time -->
-                                <div class="text-brand-cream font-semibold text-lg">
-                                    <span class="text-brand-yellow">SATURDAY</span> MAR 14 | 6:30PM
-                                </div>
-                                <!-- Venue -->
-                                <div>
-                                    <a href="https://maps.app.goo.gl/tHnnevjZBEctdTh86" target="_blank"
-                                        class="text-xl font-bold text-brand-cream hover:text-brand-orange transition-colors">
-                                        Threshold Brewery
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Next Show Strip -->
+        <div class="absolute bottom-0 left-0 right-0 next-show-strip">
+            <a id="next-show-link" href="https://maps.app.goo.gl/tHnnevjZBEctdTh86" target="_blank" class="block">
+                <div class="container mx-auto px-6 lg:px-8 py-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+                    <span class="next-show-label basis-full sm:basis-auto">Next Show</span>
+                    <span class="next-show-date">SAT MAR 14</span>
+                    <span class="next-show-dot hidden sm:block">·</span>
+                    <span class="next-show-time">6:30 PM</span>
+                    <span class="next-show-dot hidden sm:block">·</span>
+                    <span class="next-show-venue">Threshold Brewery</span>
+                    <svg class="next-show-arrow ml-auto hidden sm:block w-4 h-4" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
     <!-- Watch Section -->
-    <section id="watch" class="pt-20 relative z-10">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Title -->
-            <div class="mb-12 fade-in-up delay-100">
-                <h2 class="section-title">Watch</h2>
+    <section id="watch">
+        <div class="section-container">
+
+            <div class="section-header fade-in-up delay-100">
+                <h2 class="section-label">Watch</h2>
+                <div class="section-rule"></div>
             </div>
 
-            <div class="mb-10 fade-in-up delay-100">
-                <div class="max-w-4xl mx-auto">
-                    <div class="relative group">
-                        <div
-                            class="absolute -inset-1 bg-brand-orange rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
-                        </div>
-                        <div class="relative embed-container hover:transform-none">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-brand-brown to-brand-charcoal rounded-lg flex items-center justify-center">
-                                <div id="main-video-container" class="w-full h-full">
-                                    <iframe id="main-video" width="1224" height="689"
-                                        src="https://drive.google.com/file/d/1SXjqo1MvfGnJtA6cPSUfH8JctTzH58qi/preview"
-                                        title="Eleanor Rigby" frameborder="0" allow="autoplay" allowfullscreen
-                                        class="w-full h-full"></iframe>
-                                </div>
-                            </div>
+            <!-- Video Player -->
+            <div class="mb-5 fade-in-up delay-100">
+                <div class="relative embed-container">
+                    <div class="absolute inset-0 bg-brand-charcoal rounded-lg">
+                        <div id="main-video-container" class="w-full h-full">
+                            <iframe id="main-video" width="1224" height="689"
+                                src="https://drive.google.com/file/d/1SXjqo1MvfGnJtA6cPSUfH8JctTzH58qi/preview"
+                                title="Eleanor Rigby" frameborder="0" allow="autoplay" allowfullscreen
+                                class="w-full h-full"></iframe>
                         </div>
                     </div>
-                    <div class="mt-4 text-center">
-                        <h3 id="video-title" class="text-2xl font-bold text-brand-orange">Eleanor Rigby featuring Taylor
-                            Doty</h3>
-                        <p id="video-description" class="text-brand-warm-gray">Haymaker Bar 1/9/2026</p>
-                    </div>
+                </div>
+                <div class="mt-4">
+                    <h3 id="video-title" class="text-xl font-semibold text-brand-yellow">Eleanor Rigby featuring Taylor
+                        Doty</h3>
+                    <p id="video-description" class="text-brand-warm-gray text-sm mt-1">Haymaker Bar 1/9/2026</p>
                 </div>
             </div>
 
             <!-- Video Carousel -->
-            <div class="mb-8 fade-in-up delay-200">
-                <div class="max-w-4xl mx-auto">
-                    <div class="video-carousel-container overflow-x-auto overflow-y-hidden pb-4 px-2">
-                        <div id="video-carousel" class="flex gap-4 justify-start">
-                            <!-- Carousel items will be generated by JavaScript -->
-                        </div>
-                    </div>
+            <div class="mb-10 fade-in-up delay-200">
+                <div class="video-carousel-container overflow-x-auto overflow-y-hidden pb-3">
+                    <div id="video-carousel" class="flex gap-3"></div>
                 </div>
             </div>
 
-            <!-- Watch More Button -->
-            <div class="text-center fade-in-up delay-300">
+            <!-- Watch More -->
+            <div class="fade-in-up delay-300">
                 <a href="https://www.youtube.com/@seismicstandard-ox1de" target="_blank"
                     class="btn-primary inline-flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path
                             d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                     </svg>
                     Watch and Subscribe
                 </a>
             </div>
+
         </div>
     </section>
 
     <!-- Shows Section -->
-    <section id="shows" class="pt-20 relative z-10">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto">
-                <!-- Section Title -->
-                <div class="mb-12 fade-in-up delay-100">
-                    <h2 class="section-title">Upcoming Shows</h2>
-                </div>
-                <!-- Shows List -->
-                <div class="space-y-6 mb-16">
-                    <!-- Show -->
-                    <div class="fade-in-up delay-300">
-                        <a href="https://maps.app.goo.gl/tHnnevjZBEctdTh86" target="_blank"
-                            class="block cursor-pointer">
-                            <div class="relative group">
-                                <div
-                                    class="absolute -inset-1 bg-brand-yellow rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
-                                </div>
-                                <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-yellow/20">
-                                    <div class="flex flex-row items-center gap-4">
-                                        <div class="show-date">
-                                            <div class="text-brand-yellow font-bold text-2xl">14</div>
-                                            <div class="text-brand-brown font-bold text-xl">MAR</div>
-                                        </div>
-                                        <div class="flex-1">
-                                            <h3 class="text-xl font-bold text-brand-yellow mb-2">
-                                                Threshold Brewery
-                                            </h3>
-                                            <p class="text-brand-cream mb-1">Saturday, 6:30-8:30 PM</p>
-                                            <p class="text-brand-warm-gray text-sm">Free</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Show -->
-                    <div class="fade-in-up delay-300">
-                        <a href="https://maps.app.goo.gl/bp2EJdwdBCPnow8o7" target="_blank"
-                            class="block cursor-pointer">
-                            <div class="relative group">
-                                <div
-                                    class="absolute -inset-1 bg-brand-orange rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
-                                </div>
-                                <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-orange/20">
-                                    <div class="flex flex-row items-center gap-4">
-                                        <div class="show-date">
-                                            <div class="text-brand-orange font-bold text-2xl">28</div>
-                                            <div class="text-brand-brown font-bold text-xl">MAY</div>
-                                        </div>
-                                        <div class="flex-1">
-                                            <h3 class="text-xl font-bold text-brand-orange mb-2">
-                                                Double Mountain Brewery - Woodstock
-                                            </h3>
-                                            <p class="text-brand-cream mb-1">Thursday, 6-8 PM</p>
-                                            <p class="text-brand-warm-gray text-sm">Free</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+    <section id="shows">
+        <div class="section-container">
+
+            <div class="section-header fade-in-up delay-100">
+                <h2 class="section-label">Upcoming Shows</h2>
+                <div class="section-rule"></div>
             </div>
+
+            <div class="show-listing fade-in-up delay-200">
+                <a href="https://maps.app.goo.gl/tHnnevjZBEctdTh86" target="_blank" class="show-row group"
+                    data-show-date="2026-03-14" data-show-display-date="SAT MAR 14" data-show-time="6:30 PM"
+                    data-show-venue="Threshold Brewery" data-show-url="https://maps.app.goo.gl/tHnnevjZBEctdTh86">
+                    <div class="show-date-col">
+                        <span class="show-day">14</span>
+                        <span class="show-month">MAR</span>
+                    </div>
+                    <div class="show-info-col">
+                        <span class="show-venue group-hover:text-brand-orange transition-colors duration-200">Threshold
+                            Brewery</span>
+                        <span class="show-details">Saturday · 6:30-8:30 PM · Free · All Ages</span>
+                    </div>
+                    <svg class="show-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="https://maps.app.goo.gl/bp2EJdwdBCPnow8o7" target="_blank" class="show-row group"
+                    data-show-date="2026-05-28" data-show-display-date="THU MAY 28" data-show-time="6:00 PM"
+                    data-show-venue="Double Mountain Brewery — Woodstock"
+                    data-show-url="https://maps.app.goo.gl/bp2EJdwdBCPnow8o7">
+                    <div class="show-date-col">
+                        <span class="show-day">28</span>
+                        <span class="show-month">MAY</span>
+                    </div>
+                    <div class="show-info-col">
+                        <span class="show-venue group-hover:text-brand-orange transition-colors duration-200">Double
+                            Mountain Brewery — Woodstock</span>
+                        <span class="show-details">Thursday · 6-8 PM · Free · All Ages</span>
+                    </div>
+                    <svg class="show-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <p id="no-shows-message" class="hidden text-brand-warm-gray py-6 text-sm">No upcoming shows scheduled.
+                    Check back soon.</p>
+            </div>
+
         </div>
     </section>
 
     <!-- Tracks Section -->
-    <section id="tracks" class="pt-20 relative z-10">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Title -->
-            <div class="mb-12 fade-in-up delay-100">
-                <h2 class="section-title">Tracks</h2>
+    <section id="tracks">
+        <div class="section-container">
+
+            <div class="section-header fade-in-up delay-100">
+                <h2 class="section-label">Listen</h2>
+                <div class="section-rule"></div>
             </div>
 
-            <!-- Track Grid -->
-            <div class="grid md:grid-cols-2 gap-8 mb-16">
-                <!-- Brave New World -->
-                <div class="fade-in-up delay-200">
-                    <div class="relative group">
-                        <div
-                            class="absolute -inset-1 bg-brand-yellow rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
-                        </div>
-                        <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-yellow/20">
-                            <h3 class="text-2xl font-bold text-brand-yellow mb-2 text-center">Brave New World</h3>
-                            <div class="flex justify-center">
-                                <iframe style="border: 0; width: 350px; height: 350px;"
-                                    src="https://bandcamp.com/EmbeddedPlayer/track=4172939758/size=large/bgcol=2E2222/linkcol=FFB319/tracklist=false/minimal=true/transparent=true/"
-                                    seamless><a href="https://seismicstandard.bandcamp.com/track/brave-new-world">Brave
-                                        New World by Seismic Standard</a></iframe>
-                            </div>
-                        </div>
-                    </div>
+            <div class="grid md:grid-cols-2 gap-10 fade-in-up delay-200">
+                <div class="text-center">
+                    <h3 class="text-base font-semibold text-brand-yellow mb-4 tracking-wide uppercase text-sm">Brave New
+                        World</h3>
+                    <iframe style="border: 0; width: 100%; max-width: 350px; height: 350px;"
+                        src="https://bandcamp.com/EmbeddedPlayer/track=4172939758/size=large/bgcol=2E2222/linkcol=FFB319/tracklist=false/minimal=true/transparent=true/"
+                        seamless><a href="https://seismicstandard.bandcamp.com/track/brave-new-world">Brave New World by
+                            Seismic Standard</a></iframe>
                 </div>
-                <!-- Never Comin' Home -->
-                <div class="fade-in-up delay-100">
-                    <div class="relative group">
-                        <div
-                            class="absolute -inset-1 bg-brand-orange rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
-                        </div>
-                        <div class="relative bg-brand-brown rounded-lg p-6 border border-brand-orange/20">
-                            <h3 class="text-2xl font-bold text-brand-orange mb-2 text-center">Never Comin' Home</h3>
-                            <div class="flex justify-center">
-                                <iframe style="border: 0; width: 350px; height: 350px;"
-                                    src="https://bandcamp.com/EmbeddedPlayer/track=1152541996/size=large/bgcol=2E2222/linkcol=D94E2A/tracklist=false/minimal=true/transparent=true/"
-                                    seamless><a href="https://seismicstandard.bandcamp.com/track/never-comin-home">Never
-                                        Comin&#39; Home by Seismic Standard</a></iframe>
-                            </div>
-                        </div>
-                    </div>
+                <div class="text-center">
+                    <h3 class="text-base font-semibold text-brand-orange mb-4 tracking-wide uppercase text-sm">Never
+                        Comin' Home</h3>
+                    <iframe style="border: 0; width: 100%; max-width: 350px; height: 350px;"
+                        src="https://bandcamp.com/EmbeddedPlayer/track=1152541996/size=large/bgcol=2E2222/linkcol=D94E2A/tracklist=false/minimal=true/transparent=true/"
+                        seamless><a href="https://seismicstandard.bandcamp.com/track/never-comin-home">Never Comin' Home
+                            by Seismic Standard</a></iframe>
                 </div>
             </div>
+
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="pt-20 relative z-10">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto">
-                <!-- Section Title -->
-                <div class="mb-12 fade-in-up delay-100">
-                    <h2 class="section-title">About</h2>
-                </div>
+    <section id="about">
+        <div class="section-container">
 
-                <!-- About Content -->
-                <div class="fade-in-up delay-200">
-                    <div class="relative group">
-                        <div
-                            class="absolute -inset-1 bg-brand-orange rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-500">
-                        </div>
-                        <div class="relative bg-brand-brown rounded-lg p-8 border border-brand-orange/20">
-                            <div class="bio-content text-brand-cream">
-                                <p>Seismic Standard brings an infectious blend of folk warmth and indie rock spirit to
-                                    Portland's music scene. Their sound is anchored by lush harmonies, a mix of acoustic
-                                    and electric tones and the rattle of an old-timey washboard outfitted with all the
-                                    bells and whistles.</p>
-                                <p>The trio of Shawn Henderson, Matt McFarland and Giued Hatch
-                                    craft original songs and creative covers that mosey easily between laidback grooves
-                                    and rowdy, foot-stomping fun.</p>
-                                <p>Seismic Standard's songwriting blends the sounds of
-                                    modern folk heroes like Fruitbats, Lumnieers, and M. Ward, with some nostalgic 90s
-                                    alt-rock edge for a result that is catchy and instantly familiar.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-header fade-in-up delay-100">
+                <h2 class="section-label">About</h2>
+                <div class="section-rule"></div>
             </div>
+
+            <blockquote class="pull-quote fade-in-up delay-200">
+                "Folk warmth and indie rock spirit featuring lush harmonies, acoustic and electric tones, and the rattle
+                of an old-timey washboard."
+            </blockquote>
+
+            <div class="bio-content fade-in-up delay-300">
+                <p>Seismic Standard brings an infectious blend of folk warmth and indie rock spirit to Portland's music
+                    scene. Their sound is anchored by lush harmonies, a mix of acoustic and electric tones and the
+                    rattle of an old-timey washboard outfitted with all the bells and whistles.</p>
+                <p>The trio of Shawn Henderson, Matt McFarland and Giued Hatch craft original songs and creative covers
+                    that mosey easily between laidback grooves and rowdy, foot-stomping fun.</p>
+                <p>Seismic Standard's songwriting blends the sounds of modern folk heroes like Fruitbats, Lumineers, and
+                    M. Ward, with some nostalgic 90s alt-rock edge for a result that is catchy and instantly familiar.
+                </p>
+            </div>
+
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 relative z-10">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="flex justify-center space-x-6">
-                    <a href="https://www.youtube.com/@SeismicStandard-ox1de" target="_blank"
-                        class="text-brand-orange hover:text-brand-yellow transition-colors" aria-label="YouTube">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+    <footer class="site-footer">
+        <div class="section-container">
+            <div class="flex flex-col items-center gap-5">
+                <div class="flex items-center gap-6">
+                    <a href="https://www.youtube.com/@SeismicStandard-ox1de" target="_blank" class="footer-icon"
+                        aria-label="YouTube">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                         </svg>
                     </a>
-                    <a href="https://www.instagram.com/seismicstandardmusic" target="_blank"
-                        class="text-brand-orange hover:text-brand-yellow transition-colors" aria-label="Instagram">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <a href="https://www.instagram.com/seismicstandardmusic" target="_blank" class="footer-icon"
+                        aria-label="Instagram">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                         </svg>
                     </a>
-                    <a href="https://www.facebook.com/SeismicStandard" target="_blank"
-                        class="text-brand-orange hover:text-brand-yellow transition-colors" aria-label="Facebook">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <a href="https://www.facebook.com/SeismicStandard" target="_blank" class="footer-icon"
+                        aria-label="Facebook">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                     </a>
-                    <a href="https://seismicstandard.bandcamp.com/" target="_blank"
-                        class="text-brand-orange hover:text-brand-yellow transition-colors" aria-label="Bandcamp">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <a href="https://seismicstandard.bandcamp.com/" target="_blank" class="footer-icon"
+                        aria-label="Bandcamp">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.5" />
                             <path d="M6 8.5v7h8.5l3.5-7H6z" />
                         </svg>
                     </a>
-                    <a href="mailto:seismicstandard@gmail.com"
-                        class="text-brand-orange hover:text-brand-yellow transition-colors" aria-label="Email">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <a href="mailto:seismicstandard@gmail.com" class="footer-icon" aria-label="Email">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                         </svg>
                     </a>
                 </div>
-                <p class="text-brand-warm-gray mt-4">&copy; 2025 Seismic Standard</p>
+                <p class="text-brand-warm-gray text-sm">&copy; <span id="copyright-year"></span> Seismic Standard</p>
             </div>
         </div>
     </footer>
