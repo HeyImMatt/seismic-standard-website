@@ -358,7 +358,7 @@ nav.scrolled .md\\:hidden.flex {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	font-size: 0.75rem;
+	font-size: 0.85rem;
 	font-weight: 700;
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
@@ -381,11 +381,13 @@ nav.scrolled .md\\:hidden.flex {
 	50% { opacity: 0.4; transform: scale(0.7); }
 }
 
-.next-show-date {
-	font-size: 1rem;
-	font-weight: 700;
-	color: #ffb319;
-	letter-spacing: 0.04em;
+.next-show-date,
+.next-show-time,
+.next-show-venue {
+	font-size: 1.15rem;
+	font-weight: 500;
+	color: #f7f0e6;
+	letter-spacing: 0.02em;
 }
 
 .next-show-dot {
@@ -393,16 +395,7 @@ nav.scrolled .md\\:hidden.flex {
 	opacity: 0.5;
 }
 
-.next-show-time {
-	font-size: 1rem;
-	color: #f7f0e6;
-	opacity: 0.75;
-}
-
 .next-show-venue {
-	font-size: 1rem;
-	font-weight: 500;
-	color: #f7f0e6;
 	transition: color 0.2s ease;
 }
 

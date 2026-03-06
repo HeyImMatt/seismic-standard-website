@@ -107,25 +107,21 @@
             class="absolute inset-0 w-full h-full object-cover object-[50%_35%]">
         <div class="hero-overlay absolute inset-0"></div>
 
-        <!-- Centered Logo -->
-        <div class="absolute inset-0 flex items-center justify-center">
-            <div class="logo-container hero-logo w-72 sm:w-[22rem] md:w-[520px]"></div>
+        <!-- Hero Logo (top-left, larger than nav) -->
+        <div class="absolute top-10 sm:top-12 left-6 lg:left-8">
+            <div class="logo-container hero-logo w-80 sm:w-[26rem] md:w-[30rem]"></div>
         </div>
 
         <!-- Next Show Strip -->
         <div class="absolute bottom-0 left-0 right-0 next-show-strip">
             <a id="next-show-link" href="https://maps.app.goo.gl/tHnnevjZBEctdTh86" target="_blank" class="block">
-                <div class="container mx-auto px-6 lg:px-8 py-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+                <div class="px-6 lg:px-8 py-7 flex flex-wrap items-center gap-x-6 gap-y-2">
                     <span class="next-show-label basis-full sm:basis-auto">Next Show</span>
                     <span class="next-show-date">SAT MAR 14</span>
                     <span class="next-show-dot hidden sm:block">·</span>
-                    <span class="next-show-time">6:30 PM</span>
-                    <span class="next-show-dot hidden sm:block">·</span>
                     <span class="next-show-venue">Threshold Brewery</span>
-                    <svg class="next-show-arrow ml-auto hidden sm:block w-4 h-4" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                    <span class="next-show-dot hidden sm:block">·</span>
+                    <span class="next-show-time">6:30 PM</span>
                 </div>
             </a>
         </div>
