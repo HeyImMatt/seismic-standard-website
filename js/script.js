@@ -782,45 +782,120 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	// ================================
-	// Show Date Management
-	// Auto-hide past shows and sync the Next Show hero strip
+	// Show Management — Google Sheets CSV
 	// ================================
-	(function () {
+	const SHOWS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTFdhuDDG9j-UX6TDhauZNwoagDhzgell6KiV1AKIrvbq9rDs8IVAgnYEDq1h9BArvb8GI6VNJYR7QA/pub?gid=0&single=true&output=csv';
+
+	function parseCSV(text) {
+		const lines = text.trim().split('\n');
+		const headers = lines[0].split(',').map((h) => h.trim().replace(/^"|"$/g, ''));
+		return lines
+			.slice(1)
+			.filter((l) => l.trim())
+			.map((line) => {
+				const values = [];
+				let current = '';
+				let inQuotes = false;
+				for (let i = 0; i < line.length; i++) {
+					if (line[i] === '"') {
+						inQuotes = !inQuotes;
+					} else if (line[i] === ',' && !inQuotes) {
+						values.push(current.trim().replace(/^"|"$/g, ''));
+						current = '';
+					} else {
+						current += line[i];
+					}
+				}
+				values.push(current.trim().replace(/^"|"$/g, ''));
+				const row = {};
+				headers.forEach((h, i) => (row[h] = values[i] !== undefined ? values[i] : ''));
+				return row;
+			});
+	}
+
+	function formatTimeRange(start, end) {
+		if (!end || end.trim() === '') return start.trim();
+		const startPeriod = /AM|PM/i.exec(start);
+		const endPeriod = /AM|PM/i.exec(end);
+		if (startPeriod && endPeriod && startPeriod[0].toUpperCase() === endPeriod[0].toUpperCase()) {
+			const startStripped = start.replace(/\s*(AM|PM)/i, '').trim();
+			return `${startStripped}–${end.trim()}`;
+		}
+		return `${start.trim()}–${end.trim()}`;
+	}
+
+	function formatCost(cost) {
+		if (!cost || cost.trim() === '' || cost.trim() === '0') return 'Free';
+		const val = cost.trim();
+		return val.startsWith('$') ? val : `$${val}`;
+	}
+
+	function renderShows(shows) {
 		const today = new Date();
 		today.setHours(0, 0, 0, 0);
 
-		const rows = document.querySelectorAll('.show-row[data-show-date]');
-		let nextShow = null;
-
-		rows.forEach(function (row) {
-			const showDate = new Date(row.dataset.showDate + 'T00:00:00');
-			if (showDate < today) {
-				row.style.display = 'none';
-			} else if (!nextShow) {
-				nextShow = row;
-			}
-		});
-
-		// Show fallback message if no upcoming shows remain
+		const listing = document.getElementById('show-listing');
 		const noShows = document.getElementById('no-shows-message');
-		if (!nextShow && noShows) noShows.classList.remove('hidden');
+		const nextShowLink = document.getElementById('next-show-link');
 
-		// Update the Next Show strip with the first upcoming show
-		const strip = document.querySelector('.next-show-strip');
-		if (!nextShow) {
-			if (strip) strip.style.display = 'none';
+		const upcoming = shows
+			.filter((show) => show.Display === 'TRUE' && show.Date && new Date(show.Date + 'T00:00:00') >= today)
+			.sort((a, b) => new Date(a.Date) - new Date(b.Date));
+
+		if (upcoming.length === 0) {
+			if (noShows) noShows.classList.remove('hidden');
+			if (nextShowLink) nextShowLink.style.display = 'none';
 			return;
 		}
 
-		const link = document.getElementById('next-show-link');
-		if (link) link.href = nextShow.dataset.showUrl;
+		upcoming.forEach((show) => {
+			const date = new Date(show.Date + 'T00:00:00');
+			const dayNum = date.getDate();
+			const monthAbbr = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+			const dayFull = date.toLocaleString('en-US', { weekday: 'long' });
+			const timeRange = formatTimeRange(show.StartTime, show.EndTime);
+			const cost = formatCost(show.Cost);
+			const ages = show.AllAges === 'TRUE' ? 'All Ages' : '21+';
+			const details = `${dayFull} · ${timeRange} · ${cost} · ${ages}`;
 
-		const dateEl = document.querySelector('.next-show-date');
-		const timeEl = document.querySelector('.next-show-time');
-		const venueEl = document.querySelector('.next-show-venue');
+			const row = document.createElement(show.URL ? 'a' : 'div');
+			row.className = 'show-row group';
+			if (show.URL) {
+				row.href = show.URL;
+				row.target = '_blank';
+			}
+			row.innerHTML = `
+				<div class="show-date-col">
+					<span class="show-day">${dayNum}</span>
+					<span class="show-month">${monthAbbr}</span>
+				</div>
+				<div class="show-info-col">
+					<span class="show-venue group-hover:text-brand-orange transition-colors duration-200">${show.Venue}</span>
+					<span class="show-details">${details}</span>
+				</div>
+				<svg class="show-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+				</svg>`;
+			listing.insertBefore(row, noShows);
+		});
 
-		if (dateEl) dateEl.textContent = nextShow.dataset.showDisplayDate;
-		if (timeEl) timeEl.textContent = nextShow.dataset.showTime;
-		if (venueEl) venueEl.textContent = nextShow.dataset.showVenue;
-	})();
+		// Update hero overlay with the next upcoming show
+		const next = upcoming[0];
+		if (next && nextShowLink) {
+			const date = new Date(next.Date + 'T00:00:00');
+			const dayAbbr = date.toLocaleString('en-US', { weekday: 'short' }).toUpperCase();
+			const monthAbbr = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+			const dayNum = date.getDate();
+			nextShowLink.href = next.URL || '#';
+			nextShowLink.style.display = '';
+			nextShowLink.querySelector('.next-show-date').textContent = `${dayAbbr} ${monthAbbr} ${dayNum}`;
+			nextShowLink.querySelector('.next-show-venue').textContent = next.Venue;
+			nextShowLink.querySelector('.next-show-time').textContent = next.StartTime;
+		}
+	}
+
+	fetch(SHOWS_CSV_URL)
+		.then((res) => res.text())
+		.then((text) => renderShows(parseCSV(text)))
+		.catch((err) => console.warn('Could not load shows data:', err));
 });
