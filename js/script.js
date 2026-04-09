@@ -866,8 +866,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 			row.innerHTML = `
 				<div class="show-date-col">
-					<span class="show-day">${dayNum}</span>
 					<span class="show-month">${monthAbbr}</span>
+					<span class="show-day">${dayNum}</span>
 				</div>
 				<div class="show-info-col">
 					<span class="show-venue group-hover:text-brand-orange transition-colors duration-200">${show.Venue}</span>
