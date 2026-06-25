@@ -431,7 +431,8 @@ function updateSVGFonts(fontFamily) {
 // ================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-	document.getElementById('copyright-year').textContent = new Date().getFullYear();
+	document.getElementById('copyright-year').textContent =
+		new Date().getFullYear();
 	await checkFontLoading();
 	insertLogos();
 	initScrollAnimations();
@@ -474,7 +475,7 @@ document.addEventListener('visibilitychange', () => {
 const videoData = [
 	{
 		id: '6RFNcm8dDKo', // YouTube ID for thumbnail
-		driveId: '1g0bEgl78ZVa2doU1vg4NxWgI12Bh503l', // Google Drive ID for embedding
+		driveId: '1b5ZaeqO02AzJX1bYXvUh3ebnB0Qf-Q5f', // Google Drive ID for embedding
 		title: 'Eleanor Rigby',
 		description: 'Haymaker Bar 1/9/2026',
 		source: 'googledrive', // 'youtube' or 'googledrive'
@@ -524,10 +525,10 @@ function initVideoCarousel() {
         <div class="video-carousel-item ${
 			index === 0 ? 'active' : ''
 		}" data-index="${index}" data-video-id="${
-				video.id
-			}" role="button" tabindex="0" aria-label="Watch ${
-				video.title
-			}" onkeypress="handleVideoKeyPress(event, ${index})">
+			video.id
+		}" role="button" tabindex="0" aria-label="Watch ${
+			video.title
+		}" onkeypress="handleVideoKeyPress(event, ${index})">
           <div class="relative">
             <img 
               src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" 
@@ -784,11 +785,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	// ================================
 	// Show Management — Google Sheets CSV
 	// ================================
-	const SHOWS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTFdhuDDG9j-UX6TDhauZNwoagDhzgell6KiV1AKIrvbq9rDs8IVAgnYEDq1h9BArvb8GI6VNJYR7QA/pub?gid=0&single=true&output=csv';
+	const SHOWS_CSV_URL =
+		'https://docs.google.com/spreadsheets/d/e/2PACX-1vTFdhuDDG9j-UX6TDhauZNwoagDhzgell6KiV1AKIrvbq9rDs8IVAgnYEDq1h9BArvb8GI6VNJYR7QA/pub?gid=0&single=true&output=csv';
 
 	function parseCSV(text) {
 		const lines = text.trim().split('\n');
-		const headers = lines[0].split(',').map((h) => h.trim().replace(/^"|"$/g, ''));
+		const headers = lines[0]
+			.split(',')
+			.map((h) => h.trim().replace(/^"|"$/g, ''));
 		return lines
 			.slice(1)
 			.filter((l) => l.trim())
@@ -808,7 +812,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 				values.push(current.trim().replace(/^"|"$/g, ''));
 				const row = {};
-				headers.forEach((h, i) => (row[h] = values[i] !== undefined ? values[i] : ''));
+				headers.forEach(
+					(h, i) =>
+						(row[h] = values[i] !== undefined ? values[i] : ''),
+				);
 				return row;
 			});
 	}
@@ -817,7 +824,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (!end || end.trim() === '') return start.trim();
 		const startPeriod = /AM|PM/i.exec(start);
 		const endPeriod = /AM|PM/i.exec(end);
-		if (startPeriod && endPeriod && startPeriod[0].toUpperCase() === endPeriod[0].toUpperCase()) {
+		if (
+			startPeriod &&
+			endPeriod &&
+			startPeriod[0].toUpperCase() === endPeriod[0].toUpperCase()
+		) {
 			const startStripped = start.replace(/\s*(AM|PM)/i, '').trim();
 			return `${startStripped}–${end.trim()}`;
 		}
@@ -839,7 +850,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		const nextShowLink = document.getElementById('next-show-link');
 
 		const upcoming = shows
-			.filter((show) => show.Display === 'TRUE' && show.Date && new Date(show.Date + 'T00:00:00') >= today)
+			.filter(
+				(show) =>
+					show.Display === 'TRUE' &&
+					show.Date &&
+					new Date(show.Date + 'T00:00:00') >= today,
+			)
 			.sort((a, b) => new Date(a.Date) - new Date(b.Date));
 
 		if (upcoming.length === 0) {
@@ -851,7 +867,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		upcoming.forEach((show) => {
 			const date = new Date(show.Date + 'T00:00:00');
 			const dayNum = date.getDate();
-			const monthAbbr = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+			const monthAbbr = date
+				.toLocaleString('en-US', { month: 'short' })
+				.toUpperCase();
 			const dayFull = date.toLocaleString('en-US', { weekday: 'long' });
 			const timeRange = formatTimeRange(show.StartTime, show.EndTime);
 			const cost = formatCost(show.Cost);
@@ -883,14 +901,21 @@ document.addEventListener('DOMContentLoaded', () => {
 		const next = upcoming[0];
 		if (next && nextShowLink) {
 			const date = new Date(next.Date + 'T00:00:00');
-			const dayAbbr = date.toLocaleString('en-US', { weekday: 'short' }).toUpperCase();
-			const monthAbbr = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+			const dayAbbr = date
+				.toLocaleString('en-US', { weekday: 'short' })
+				.toUpperCase();
+			const monthAbbr = date
+				.toLocaleString('en-US', { month: 'short' })
+				.toUpperCase();
 			const dayNum = date.getDate();
 			nextShowLink.href = next.URL || '#';
 			nextShowLink.style.display = '';
-			nextShowLink.querySelector('.next-show-date').textContent = `${dayAbbr} ${monthAbbr} ${dayNum}`;
-			nextShowLink.querySelector('.next-show-venue').textContent = next.Venue;
-			nextShowLink.querySelector('.next-show-time').textContent = next.StartTime;
+			nextShowLink.querySelector('.next-show-date').textContent =
+				`${dayAbbr} ${monthAbbr} ${dayNum}`;
+			nextShowLink.querySelector('.next-show-venue').textContent =
+				next.Venue;
+			nextShowLink.querySelector('.next-show-time').textContent =
+				next.StartTime;
 		}
 	}
 
