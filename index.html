@@ -4,15 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Seismic Standard - Indie Folk Trio">
-    <title>Seismic Standard</title>
+    <meta name="description" content="Pre-save “30,000 Feet,” the debut single and music video from Seismic Standard, arriving September 17, 2026.">
+    <link rel="canonical" href="https://seismicstandardmusic.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Seismic Standard">
+    <meta property="og:title" content="30,000 Feet — Seismic Standard">
+    <meta property="og:description" content="Pre-save “30,000 Feet,” the debut single and music video from Seismic Standard, arriving September 17, 2026.">
+    <meta property="og:url" content="https://seismicstandardmusic.com/">
+    <meta property="og:image" content="https://seismicstandardmusic.com/images/30000-feet-cover.jpg">
+    <meta property="og:image:alt" content="Cover artwork for 30,000 Feet by Seismic Standard">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="30,000 Feet — Seismic Standard">
+    <meta name="twitter:description" content="Pre-save “30,000 Feet,” the debut single and music video from Seismic Standard, arriving September 17, 2026.">
+    <meta name="twitter:image" content="https://seismicstandardmusic.com/images/30000-feet-cover.jpg">
+    <meta name="twitter:image:alt" content="Cover artwork for 30,000 Feet by Seismic Standard">
+
+    <title>30,000 Feet — Seismic Standard</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="preload" href="fonts/chinese.sthupo.ttf" as="font" type="font/ttf" crossorigin="anonymous">
     <link rel="preconnect" href="." crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=20260831-2">
+    <link rel="stylesheet" href="css/release.css?v=20260901-2">
 
     <script>
         tailwind.config = {
@@ -48,7 +65,7 @@
     </script>
 </head>
 
-<body class="text-brand-cream min-h-screen">
+<body class="home-release-campaign text-brand-cream min-h-screen">
 
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50">
@@ -64,10 +81,12 @@
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center gap-8">
+                    <a href="#release-content" class="nav-link" data-track-event="release_nav_click"
+                        data-track-type="homepage_nav" data-release-mode="pre-release">30,000 Feet</a>
+                    <a href="#about" class="nav-link">About</a>
                     <a href="#watch" class="nav-link">Watch</a>
                     <a href="#shows" class="nav-link">Shows</a>
                     <a href="#tracks" class="nav-link">Listen</a>
-                    <a href="#about" class="nav-link">About</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -92,15 +111,95 @@
             class="md:hidden hidden fixed top-0 left-0 right-0 bottom-0 h-screen bg-brand-brown/95 backdrop-blur-md z-40 pt-20 pb-6">
             <div class="container mx-auto px-6">
                 <nav class="flex flex-col">
+                    <a href="#release-content" class="mobile-nav-link" data-track-event="release_nav_click"
+                        data-track-type="homepage_nav" data-release-mode="pre-release">30,000 Feet</a>
+                    <a href="#about" class="mobile-nav-link">About</a>
                     <a href="#watch" class="mobile-nav-link">Watch</a>
                     <a href="#shows" class="mobile-nav-link">Shows</a>
                     <a href="#tracks" class="mobile-nav-link">Listen</a>
-                    <a href="#about" class="mobile-nav-link">About</a>
                 </nav>
             </div>
         </div>
     </nav>
 
+    <!-- Temporary campaign hero for “30,000 Feet” -->
+    <main id="release-content" class="home-release-shell">
+        <div class="release-campaign-logo absolute top-10 sm:top-12 left-6 lg:left-8" aria-hidden="true">
+            <div class="logo-container hero-logo w-80 sm:w-[26rem] md:w-[30rem]"></div>
+        </div>
+
+        <section class="release-hero" aria-labelledby="release-title">
+            <div class="release-video-column">
+                <div class="release-section-heading">
+                    <span>Official trailer</span>
+                    <span class="release-section-rule" aria-hidden="true"></span>
+                </div>
+
+                <div id="release-video" class="release-video-shell">
+                    <iframe src="https://www.youtube-nocookie.com/embed/Ffm4WeMkOQ0?rel=0"
+                        title="30,000 Feet official trailer"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="release-details">
+                <p class="release-eyebrow">Debut single + video</p>
+                <h1 id="release-title" class="release-title">30,000 Feet</h1>
+                <p class="release-date"><time datetime="2026-09-17">September 17, 2026</time></p>
+                <p id="release-description" class="release-description release-description-long">Our debut single is
+                    scheduled for takeoff! Pre-save it now and be first to hear it on release day.</p>
+                <p class="release-description release-description-short">Our debut single is scheduled for takeoff!</p>
+
+                <div id="release-actions" class="release-actions">
+                    <a class="btn-primary release-primary-action" href="https://show.co/9vLQ9Cs" target="_blank"
+                        rel="noopener noreferrer" data-action-id="pre_save" data-track-event="release_cta_click"
+                        data-track-type="pre_save" data-release-mode="pre-release">
+                        <svg class="release-spotify-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M6.7 9.1c3.7-1.1 7.8-.8 10.9 1"></path>
+                            <path d="M7.4 12.1c3.1-.8 6.6-.5 9.3.9"></path>
+                            <path d="M8.1 15c2.5-.6 5.2-.3 7.5.8"></path>
+                        </svg>
+                        <span>Pre-save &amp; Follow on Spotify</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="release-social-actions" aria-label="Follow Seismic Standard">
+                <a class="release-social-action" href="https://www.youtube.com/@SeismicStandard-ox1de" target="_blank"
+                    rel="noopener noreferrer" data-track-event="social_link_click" data-track-type="youtube">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
+                        </path>
+                    </svg>
+                    <span>YouTube</span>
+                </a>
+                <a class="release-social-action" href="https://www.instagram.com/seismicstandardmusic" target="_blank"
+                    rel="noopener noreferrer" data-track-event="social_link_click" data-track-type="instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+                        </path>
+                    </svg>
+                    <span>Instagram</span>
+                </a>
+                <a class="release-social-action" href="https://www.facebook.com/SeismicStandard" target="_blank"
+                    rel="noopener noreferrer" data-track-event="social_link_click" data-track-type="facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
+                        </path>
+                    </svg>
+                    <span>Facebook</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Original homepage hero preserved here for restoration after the release campaign. -->
+    <template id="original-home-hero">
     <!-- Hero Section -->
     <section class="hero-section">
         <img src="images/band-photo.jpg" alt="Seismic Standard"
@@ -120,6 +219,44 @@
             <div class="next-show-venue"></div>
             <div class="next-show-time"></div>
         </a>
+    </section>
+    </template>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="section-container about-container">
+            <div class="section-header fade-in-up delay-100">
+                <h2 class="section-label">About</h2>
+                <div class="section-rule"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-copy">
+                    <blockquote class="pull-quote fade-in-up delay-200">
+                        “Folk warmth and indie rock spirit featuring lush harmonies, acoustic and electric tones, and
+                        the rattle of an old-timey washboard.”
+                    </blockquote>
+
+                    <div class="bio-content fade-in-up delay-300">
+                        <p>Seismic Standard brings an infectious blend of folk warmth and indie rock spirit to
+                            Portland's music scene. Their sound is anchored by lush harmonies, a mix of acoustic and
+                            electric tones and the rattle of an old-timey washboard outfitted with all the bells and
+                            whistles.</p>
+                        <p>The trio of Shawn Henderson, Matt McFarland and Giued Hatch craft original songs and creative
+                            covers that mosey easily between laidback grooves and rowdy, foot-stomping fun.</p>
+                        <p>Seismic Standard's songwriting blends the sounds of modern folk heroes like Fruitbats,
+                            Lumineers, and M. Ward, with some nostalgic 90s alt-rock edge for a result that is catchy
+                            and
+                            instantly familiar.</p>
+                    </div>
+                </div>
+
+                <figure class="about-photo-frame fade-in-up delay-200">
+                    <img class="about-photo" src="images/band-photo.jpg"
+                        alt="Seismic Standard sitting together on a staircase with a guitar and washboard.">
+                </figure>
+            </div>
+        </div>
     </section>
 
     <!-- Watch Section -->
@@ -221,34 +358,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="section-container">
-
-            <div class="section-header fade-in-up delay-100">
-                <h2 class="section-label">About</h2>
-                <div class="section-rule"></div>
-            </div>
-
-            <blockquote class="pull-quote fade-in-up delay-200">
-                "Folk warmth and indie rock spirit featuring lush harmonies, acoustic and electric tones, and the rattle
-                of an old-timey washboard."
-            </blockquote>
-
-            <div class="bio-content fade-in-up delay-300">
-                <p>Seismic Standard brings an infectious blend of folk warmth and indie rock spirit to Portland's music
-                    scene. Their sound is anchored by lush harmonies, a mix of acoustic and electric tones and the
-                    rattle of an old-timey washboard outfitted with all the bells and whistles.</p>
-                <p>The trio of Shawn Henderson, Matt McFarland and Giued Hatch craft original songs and creative covers
-                    that mosey easily between laidback grooves and rowdy, foot-stomping fun.</p>
-                <p>Seismic Standard's songwriting blends the sounds of modern folk heroes like Fruitbats, Lumineers, and
-                    M. Ward, with some nostalgic 90s alt-rock edge for a result that is catchy and instantly familiar.
-                </p>
-            </div>
-
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="site-footer">
         <div class="section-container">
@@ -294,6 +403,8 @@
         </div>
     </footer>
 
+    <script type="module" src="js/analytics.mjs"></script>
+    <script type="module" src="js/release.mjs?v=20260902-1"></script>
     <script src="js/script.js"></script>
 </body>
 

@@ -496,16 +496,35 @@ nav.scrolled .md\\:hidden.flex {
 }
 
 /* ================================
-   Pull Quote
+   About
    ================================ */
+.about-container {
+	max-width: 64rem;
+	padding-top: 5.5rem;
+	padding-bottom: 5.5rem;
+}
+
+.about-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.4fr) minmax(17rem, 0.8fr);
+	align-items: stretch;
+	gap: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.about-copy {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 .pull-quote {
-	font-size: 1.35rem;
+	font-size: 1.4rem;
 	font-style: italic;
 	color: #ffb319;
 	border-left: 2px solid #d94e2a;
 	padding-left: 1.25rem;
-	margin: 0 0 2.5rem 0;
-	line-height: 1.6;
+	margin: 0 0 2rem;
+	line-height: 1.5;
 	opacity: 0.9;
 }
 
@@ -519,15 +538,45 @@ nav.scrolled .md\\:hidden.flex {
    Bio
    ================================ */
 .bio-content {
-	font-size: 1.1rem;
-	line-height: 1.85;
+	font-size: 1rem;
+	line-height: 1.75;
 	color: #f7f0e6;
-	max-width: 640px;
 	opacity: 0.9;
 }
 
 .bio-content p {
 	margin-bottom: 1.25rem;
+}
+
+.bio-content p:last-child {
+	margin-bottom: 0;
+}
+
+.about-photo-frame {
+	position: relative;
+	min-height: 30rem;
+	margin: 0;
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.11);
+	border-radius: 0.5rem;
+	background: #2e2222;
+	box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.32);
+}
+
+.about-photo-frame::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, transparent 62%, rgba(46, 34, 34, 0.2));
+	pointer-events: none;
+}
+
+.about-photo {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 42%;
 }
 
 /* ================================
@@ -873,6 +922,22 @@ button:focus {
 
 	.pull-quote {
 		font-size: 1.1rem;
+	}
+
+	.about-container {
+		padding-top: 4.5rem;
+		padding-bottom: 4.5rem;
+	}
+
+	.about-grid {
+		grid-template-columns: 1fr;
+		gap: 2.25rem;
+	}
+
+	.about-photo-frame {
+		order: -1;
+		min-height: 0;
+		aspect-ratio: 4 / 5;
 	}
 
 	.show-row {
