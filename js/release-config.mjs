@@ -2,7 +2,7 @@ export const releaseConfig = Object.freeze({
 	mode: 'pre-release',
 	releaseDate: '2026-09-17',
 	preSaveUrl: 'https://show.co/9vLQ9Cs',
-	teaserVideoId: 'q5LzX28XSh8',
+	teaserVideoId: 'Ffm4WeMkOQ0',
 	officialVideoId: '',
 	listenUrl: '',
 	youtubeChannelUrl: 'https://www.youtube.com/@SeismicStandard-ox1de',

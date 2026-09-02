@@ -2,7 +2,7 @@ import {
 	getReleaseActions,
 	getTeaserDestination,
 	releaseConfig,
-} from './release-config.mjs?v=20260901-2';
+} from './release-config.mjs?v=20260902-1';
 import {
 	initDeclarativeTracking,
 	trackEvent,

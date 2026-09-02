@@ -1,4 +1,5 @@
 import assert from 'assert';
+import { readFileSync } from 'fs';
 
 import {
 	getReleaseActions,
@@ -56,8 +57,17 @@ test('missing teaser ID uses the YouTube channel fallback', () => {
 test('live release configuration loads the 30,000 Feet trailer', () => {
 	assert.deepEqual(getTeaserDestination(releaseConfig), {
 		type: 'embed',
-		value: 'https://www.youtube-nocookie.com/embed/q5LzX28XSh8?rel=0',
+		value: 'https://www.youtube-nocookie.com/embed/Ffm4WeMkOQ0?rel=0',
 	});
+});
+
+test('initial homepage markup loads the current trailer without a content flash', () => {
+	const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+	assert.ok(
+		html.includes(
+			'https://www.youtube-nocookie.com/embed/Ffm4WeMkOQ0?rel=0',
+		),
+	);
 });
 
 test('configured teaser ID produces a privacy-enhanced embed URL', () => {
