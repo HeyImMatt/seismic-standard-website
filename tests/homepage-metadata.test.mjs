@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const normalizedHtml = html.replace(/\s+/g, ' ');
@@ -19,6 +19,17 @@ const expectedTags = [
 for (const tag of expectedTags) {
 	assert.ok(html.includes(tag), `Missing homepage metadata: ${tag}`);
 }
+
+const faviconMatch = normalizedHtml.match(
+	/<link rel="icon" type="image\/svg\+xml" href="([^"]+)">/,
+);
+assert.ok(faviconMatch, 'Missing SVG favicon link');
+const faviconPath = new URL(
+	`../${faviconMatch[1].replace(/^\//, '')}`,
+	import.meta.url,
+);
+faviconPath.search = '';
+assert.ok(existsSync(faviconPath), 'SVG favicon asset is missing');
 
 const description =
 	'“30,000 Feet,” the debut single and music video from Seismic Standard, is out now. Watch the official video and listen on your favorite platform.';
