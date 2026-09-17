@@ -2,8 +2,8 @@ import assert from 'assert';
 import { readFileSync } from 'fs';
 
 import {
+	getOfficialVideoDestination,
 	getReleaseActions,
-	getTeaserDestination,
 	releaseConfig,
 } from '../js/release-config.mjs';
 
@@ -12,16 +12,6 @@ const tests = [];
 function test(name, run) {
 	tests.push({ name, run });
 }
-
-test('pre-release mode exposes only the live Show.co action', () => {
-	assert.deepEqual(getReleaseActions({ ...releaseConfig, mode: 'pre-release' }), [
-		{
-			id: 'pre_save',
-			label: 'Pre-save & Follow on Spotify',
-			url: 'https://show.co/9vLQ9Cs',
-		},
-	]);
-});
 
 test('live release exposes equal direct links to each streaming service', () => {
 	assert.deepEqual(getReleaseActions(releaseConfig), [
@@ -43,7 +33,7 @@ test('live release exposes equal direct links to each streaming service', () => 
 	]);
 });
 
-test('released mode omits unconfigured or unsafe service destinations', () => {
+test('release omits unconfigured or unsafe service destinations', () => {
 	assert.deepEqual(
 		getReleaseActions({
 			...releaseConfig,
@@ -55,12 +45,11 @@ test('released mode omits unconfigured or unsafe service destinations', () => {
 	);
 });
 
-test('missing teaser ID uses the YouTube channel fallback', () => {
+test('missing official video ID uses the YouTube channel fallback', () => {
 	assert.deepEqual(
-		getTeaserDestination({
+		getOfficialVideoDestination({
 			...releaseConfig,
-			mode: 'pre-release',
-			teaserVideoId: '',
+			officialVideoId: '',
 		}),
 		{
 			type: 'link',
@@ -70,7 +59,7 @@ test('missing teaser ID uses the YouTube channel fallback', () => {
 });
 
 test('live release configuration loads the official music video', () => {
-	assert.deepEqual(getTeaserDestination(releaseConfig), {
+	assert.deepEqual(getOfficialVideoDestination(releaseConfig), {
 		type: 'embed',
 		value: 'https://www.youtube-nocookie.com/embed/z1rh_mLsXPI?rel=0',
 	});
@@ -101,12 +90,11 @@ test('initial homepage markup shows the live release without a content flash', (
 	}
 });
 
-test('configured teaser ID produces a privacy-enhanced embed URL', () => {
+test('configured official video ID produces a privacy-enhanced embed URL', () => {
 	assert.deepEqual(
-		getTeaserDestination({
+		getOfficialVideoDestination({
 			...releaseConfig,
-			mode: 'pre-release',
-			teaserVideoId: 'abc123_X-y',
+			officialVideoId: 'abc123_X-y',
 		}),
 		{
 			type: 'embed',

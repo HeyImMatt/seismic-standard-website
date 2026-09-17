@@ -1,8 +1,4 @@
 export const releaseConfig = Object.freeze({
-	mode: 'released',
-	releaseDate: '2026-09-17',
-	preSaveUrl: 'https://show.co/9vLQ9Cs',
-	teaserVideoId: 'Ffm4WeMkOQ0',
 	officialVideoId: 'z1rh_mLsXPI',
 	spotifyUrl: 'https://open.spotify.com/album/68AazSEd5ehZBDzODKd47V',
 	appleMusicUrl:
@@ -27,38 +23,23 @@ function isYouTubeVideoId(value) {
 }
 
 export function getReleaseActions(config = releaseConfig) {
-	if (config.mode === 'released') {
-		return [
-			{ id: 'spotify', label: 'Spotify', url: config.spotifyUrl },
-			{
-				id: 'apple_music',
-				label: 'Apple',
-				url: config.appleMusicUrl,
-			},
-			{
-				id: 'amazon_music',
-				label: 'Amazon',
-				url: config.amazonMusicUrl,
-			},
-		].filter((action) => isSafeHttpUrl(action.url));
-	}
-
-	if (!isSafeHttpUrl(config.preSaveUrl)) return [];
-
 	return [
+		{ id: 'spotify', label: 'Spotify', url: config.spotifyUrl },
 		{
-			id: 'pre_save',
-			label: 'Pre-save & Follow on Spotify',
-			url: config.preSaveUrl,
+			id: 'apple_music',
+			label: 'Apple',
+			url: config.appleMusicUrl,
 		},
-	];
+		{
+			id: 'amazon_music',
+			label: 'Amazon',
+			url: config.amazonMusicUrl,
+		},
+	].filter((action) => isSafeHttpUrl(action.url));
 }
 
-export function getTeaserDestination(config = releaseConfig) {
-	const videoId =
-		config.mode === 'released' && isYouTubeVideoId(config.officialVideoId)
-			? config.officialVideoId
-			: config.teaserVideoId;
+export function getOfficialVideoDestination(config = releaseConfig) {
+	const videoId = config.officialVideoId;
 
 	if (isYouTubeVideoId(videoId)) {
 		return {

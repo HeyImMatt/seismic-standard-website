@@ -1,12 +1,14 @@
 import {
+	getOfficialVideoDestination,
 	getReleaseActions,
-	getTeaserDestination,
 	releaseConfig,
-} from './release-config.mjs?v=20260917-2';
+} from './release-config.mjs?v=20260917-3';
 import {
 	initDeclarativeTracking,
 	trackEvent,
 } from './analytics.mjs';
+
+const RELEASE_MODE = 'released';
 
 function createServiceIcon(service) {
 	const namespace = 'http://www.w3.org/2000/svg';
@@ -62,10 +64,6 @@ function renderReleaseActions() {
 	if (!container) return;
 
 	const actions = getReleaseActions(releaseConfig);
-	container.classList.toggle(
-		'release-service-actions',
-		releaseConfig.mode === 'released',
-	);
 	container.replaceChildren();
 
 	actions.forEach((action) => {
@@ -77,11 +75,9 @@ function renderReleaseActions() {
 		link.dataset.actionId = action.id;
 		link.dataset.trackEvent = 'release_cta_click';
 		link.dataset.trackType = action.id;
-		link.dataset.releaseMode = releaseConfig.mode;
+		link.dataset.releaseMode = RELEASE_MODE;
 
-		link.appendChild(
-			createServiceIcon(action.id === 'pre_save' ? 'spotify' : action.id),
-		);
+		link.appendChild(createServiceIcon(action.id));
 		const label = document.createElement('span');
 		label.textContent = action.label;
 		link.appendChild(label);
@@ -96,15 +92,12 @@ function initReleaseVideo() {
 	const container = document.getElementById('release-video');
 	if (!container) return;
 
-	const destination = getTeaserDestination(releaseConfig);
+	const destination = getOfficialVideoDestination(releaseConfig);
 
 	if (destination.type === 'embed') {
 		const iframe = document.createElement('iframe');
 		iframe.src = destination.value;
-		iframe.title =
-			releaseConfig.mode === 'released'
-				? '30,000 Feet official video'
-				: '30,000 Feet official teaser';
+		iframe.title = '30,000 Feet official video';
 		iframe.allow =
 			'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
 		iframe.allowFullscreen = true;
@@ -119,8 +112,8 @@ function initReleaseVideo() {
 	link.rel = 'noopener noreferrer';
 	link.textContent = 'Watch on YouTube';
 	link.dataset.trackEvent = 'release_video_play';
-	link.dataset.trackType = 'teaser';
-	link.dataset.releaseMode = releaseConfig.mode;
+	link.dataset.trackType = 'official_video';
+	link.dataset.releaseMode = RELEASE_MODE;
 	container.replaceChildren(link);
 	initDeclarativeTracking();
 }
@@ -129,7 +122,7 @@ function initReleasePage() {
 	renderReleaseActions();
 	initReleaseVideo();
 	trackEvent('release_page_visit', {
-		release_mode: releaseConfig.mode,
+		release_mode: RELEASE_MODE,
 		page_context: 'homepage_hero',
 	});
 }

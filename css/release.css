@@ -248,6 +248,10 @@
 		margin-inline: auto;
 	}
 
+	.release-description {
+		max-width: none;
+	}
+
 	.release-social-actions {
 		grid-row: 3;
 	}
