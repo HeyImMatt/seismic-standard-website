@@ -1,10 +1,13 @@
 export const releaseConfig = Object.freeze({
-	mode: 'pre-release',
+	mode: 'released',
 	releaseDate: '2026-09-17',
 	preSaveUrl: 'https://show.co/9vLQ9Cs',
 	teaserVideoId: 'Ffm4WeMkOQ0',
-	officialVideoId: '',
-	listenUrl: '',
+	officialVideoId: 'z1rh_mLsXPI',
+	spotifyUrl: 'https://open.spotify.com/album/68AazSEd5ehZBDzODKd47V',
+	appleMusicUrl:
+		'https://music.apple.com/us/album/30-000-feet-single/6802846065',
+	amazonMusicUrl: 'https://music.amazon.com/tracks/B0HFPRXMLK',
 	youtubeChannelUrl: 'https://www.youtube.com/@SeismicStandard-ox1de',
 });
 
@@ -25,25 +28,19 @@ function isYouTubeVideoId(value) {
 
 export function getReleaseActions(config = releaseConfig) {
 	if (config.mode === 'released') {
-		const actions = [];
-
-		if (isSafeHttpUrl(config.listenUrl)) {
-			actions.push({
-				id: 'listen_everywhere',
-				label: 'Listen Everywhere',
-				url: config.listenUrl,
-			});
-		}
-
-		if (isYouTubeVideoId(config.officialVideoId)) {
-			actions.push({
-				id: 'watch_official_video',
-				label: 'Watch Official Video',
-				url: `https://www.youtube.com/watch?v=${config.officialVideoId}`,
-			});
-		}
-
-		return actions;
+		return [
+			{ id: 'spotify', label: 'Spotify', url: config.spotifyUrl },
+			{
+				id: 'apple_music',
+				label: 'Apple',
+				url: config.appleMusicUrl,
+			},
+			{
+				id: 'amazon_music',
+				label: 'Amazon',
+				url: config.amazonMusicUrl,
+			},
+		].filter((action) => isSafeHttpUrl(action.url));
 	}
 
 	if (!isSafeHttpUrl(config.preSaveUrl)) return [];
@@ -58,10 +55,15 @@ export function getReleaseActions(config = releaseConfig) {
 }
 
 export function getTeaserDestination(config = releaseConfig) {
-	if (isYouTubeVideoId(config.teaserVideoId)) {
+	const videoId =
+		config.mode === 'released' && isYouTubeVideoId(config.officialVideoId)
+			? config.officialVideoId
+			: config.teaserVideoId;
+
+	if (isYouTubeVideoId(videoId)) {
 		return {
 			type: 'embed',
-			value: `https://www.youtube-nocookie.com/embed/${config.teaserVideoId}?rel=0`,
+			value: `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`,
 		};
 	}
 

@@ -14,7 +14,7 @@ function test(name, run) {
 }
 
 test('pre-release mode exposes only the live Show.co action', () => {
-	assert.deepEqual(getReleaseActions(releaseConfig), [
+	assert.deepEqual(getReleaseActions({ ...releaseConfig, mode: 'pre-release' }), [
 		{
 			id: 'pre_save',
 			label: 'Pre-save & Follow on Spotify',
@@ -23,56 +23,91 @@ test('pre-release mode exposes only the live Show.co action', () => {
 	]);
 });
 
-test('released mode exposes only configured destinations', () => {
+test('live release exposes equal direct links to each streaming service', () => {
+	assert.deepEqual(getReleaseActions(releaseConfig), [
+		{
+			id: 'spotify',
+			label: 'Spotify',
+			url: 'https://open.spotify.com/album/68AazSEd5ehZBDzODKd47V',
+		},
+		{
+			id: 'apple_music',
+			label: 'Apple',
+			url: 'https://music.apple.com/us/album/30-000-feet-single/6802846065',
+		},
+		{
+			id: 'amazon_music',
+			label: 'Amazon',
+			url: 'https://music.amazon.com/tracks/B0HFPRXMLK',
+		},
+	]);
+});
+
+test('released mode omits unconfigured or unsafe service destinations', () => {
 	assert.deepEqual(
 		getReleaseActions({
 			...releaseConfig,
-			mode: 'released',
-			listenUrl: 'https://example.com/listen',
+			spotifyUrl: 'javascript:alert(1)',
+			appleMusicUrl: '',
+			amazonMusicUrl: '',
 		}),
-		[
-			{
-				id: 'listen_everywhere',
-				label: 'Listen Everywhere',
-				url: 'https://example.com/listen',
-			},
-		],
-	);
-});
-
-test('released mode omits every unconfigured destination', () => {
-	assert.deepEqual(
-		getReleaseActions({ ...releaseConfig, mode: 'released' }),
 		[],
 	);
 });
 
 test('missing teaser ID uses the YouTube channel fallback', () => {
-	assert.deepEqual(getTeaserDestination({ ...releaseConfig, teaserVideoId: '' }), {
-		type: 'link',
-		value: releaseConfig.youtubeChannelUrl,
-	});
+	assert.deepEqual(
+		getTeaserDestination({
+			...releaseConfig,
+			mode: 'pre-release',
+			teaserVideoId: '',
+		}),
+		{
+			type: 'link',
+			value: releaseConfig.youtubeChannelUrl,
+		},
+	);
 });
 
-test('live release configuration loads the 30,000 Feet trailer', () => {
+test('live release configuration loads the official music video', () => {
 	assert.deepEqual(getTeaserDestination(releaseConfig), {
 		type: 'embed',
-		value: 'https://www.youtube-nocookie.com/embed/Ffm4WeMkOQ0?rel=0',
+		value: 'https://www.youtube-nocookie.com/embed/z1rh_mLsXPI?rel=0',
 	});
 });
 
-test('initial homepage markup loads the current trailer without a content flash', () => {
+test('initial homepage markup shows the live release without a content flash', () => {
 	const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 	assert.ok(
 		html.includes(
-			'https://www.youtube-nocookie.com/embed/Ffm4WeMkOQ0?rel=0',
+			'https://www.youtube-nocookie.com/embed/z1rh_mLsXPI?rel=0',
 		),
 	);
+	assert.ok(html.includes('<span>Official Music Video</span>'));
+	assert.ok(html.includes('Released September 17, 2026'));
+	assert.match(
+		html,
+		/Our debut single is\s+airborne! Watch the official music video/,
+	);
+	assert.ok(html.includes('data-release-mode="released"'));
+	for (const service of ['YouTube', 'Instagram', 'Facebook']) {
+		assert.match(
+			html,
+			new RegExp(
+				`<a class="release-social-action"[^>]*aria-label="${service}"`,
+				's',
+			),
+		);
+	}
 });
 
 test('configured teaser ID produces a privacy-enhanced embed URL', () => {
 	assert.deepEqual(
-		getTeaserDestination({ ...releaseConfig, teaserVideoId: 'abc123_X-y' }),
+		getTeaserDestination({
+			...releaseConfig,
+			mode: 'pre-release',
+			teaserVideoId: 'abc123_X-y',
+		}),
 		{
 			type: 'embed',
 			value: 'https://www.youtube-nocookie.com/embed/abc123_X-y?rel=0',
@@ -84,7 +119,9 @@ test('unsafe URLs are never returned as actions', () => {
 	assert.deepEqual(
 		getReleaseActions({
 			...releaseConfig,
-			preSaveUrl: 'javascript:alert(1)',
+			spotifyUrl: 'javascript:alert(1)',
+			appleMusicUrl: 'javascript:alert(1)',
+			amazonMusicUrl: 'javascript:alert(1)',
 		}),
 		[],
 	);
