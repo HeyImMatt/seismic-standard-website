@@ -2,6 +2,7 @@ import assert from 'assert';
 import { readFileSync } from 'fs';
 
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const normalizedHtml = html.replace(/\s+/g, ' ');
 
 const expectedTags = [
 	'<title>30,000 Feet — Seismic Standard</title>',
@@ -20,18 +21,18 @@ for (const tag of expectedTags) {
 }
 
 const description =
-	'Pre-save “30,000 Feet,” the debut single and music video from Seismic Standard, arriving September 17, 2026.';
+	'“30,000 Feet,” the debut single and music video from Seismic Standard, is out now. Watch the official video and listen on your favorite platform.';
 
 assert.ok(
-	html.includes(`<meta name="description" content="${description}">`),
+	normalizedHtml.includes(`<meta name="description" content="${description}">`),
 	'Missing release-focused meta description',
 );
 assert.ok(
-	html.includes(`<meta property="og:description" content="${description}">`),
+	normalizedHtml.includes(`<meta property="og:description" content="${description}">`),
 	'Missing Open Graph description',
 );
 assert.ok(
-	html.includes(`<meta name="twitter:description" content="${description}">`),
+	normalizedHtml.includes(`<meta name="twitter:description" content="${description}">`),
 	'Missing Twitter description',
 );
 

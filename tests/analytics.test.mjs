@@ -26,7 +26,7 @@ test('uses the production GA4 web-stream measurement ID', () => {
 
 test('tracking is harmless without browser globals or configured GA', () => {
 	assert.doesNotThrow(() =>
-		trackEvent('release_cta_click', { release_mode: 'pre-release' }),
+		trackEvent('release_cta_click', { release_mode: 'released' }),
 	);
 });
 
