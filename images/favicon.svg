@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Seismic Standard waveform">
+  <g fill="#D94E2A">
+    <rect x="0" y="29" width="3" height="6" rx="1.5"/>
+    <rect x="4" y="29" width="3" height="6" rx="1.5"/>
+    <rect x="8" y="22" width="3" height="20" rx="1.5"/>
+    <rect x="12" y="26" width="3" height="12" rx="1.5"/>
+    <rect x="16" y="29" width="3" height="6" rx="1.5"/>
+    <rect x="20" y="29" width="3" height="6" rx="1.5"/>
+    <rect x="24" y="29" width="3" height="6" rx="1.5"/>
+    <rect x="28" y="27" width="3" height="10" rx="1.5"/>
+    <rect x="33" y="21" width="3" height="22" rx="1.5"/>
+    <rect x="38" y="2" width="3" height="60" rx="1.5"/>
+    <rect x="43" y="10" width="3" height="44" rx="1.5"/>
+    <rect x="48" y="19" width="3" height="26" rx="1.5"/>
+    <rect x="53" y="27" width="3" height="10" rx="1.5"/>
+    <rect x="57" y="29" width="3" height="6" rx="1.5"/>
+    <rect x="61" y="29" width="3" height="6" rx="1.5"/>
+  </g>
+</svg>
