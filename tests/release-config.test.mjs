@@ -79,15 +79,14 @@ test('initial homepage markup shows the live release without a content flash', (
 		/Our debut single is\s+airborne! Watch the official music video/,
 	);
 	assert.ok(html.includes('data-release-mode="released"'));
-	for (const service of ['YouTube', 'Instagram', 'Facebook']) {
-		assert.match(
-			html,
-			new RegExp(
-				`<a class="release-social-action"[^>]*aria-label="${service}"`,
-				's',
-			),
-		);
-	}
+	assert.ok(
+		!html.includes('release-campaign-logo'),
+		'homepage hero already provides the Seismic Standard logo',
+	);
+	assert.ok(
+		!html.includes('release-social-actions'),
+		'homepage footer already provides the social links',
+	);
 });
 
 test('configured official video ID produces a privacy-enhanced embed URL', () => {
