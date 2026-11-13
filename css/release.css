@@ -18,12 +18,7 @@
 
 .home-release-shell .release-hero {
 	min-height: 100svh;
-	padding-top: 16.5rem;
-}
-
-.release-campaign-logo {
-	z-index: 3;
-	pointer-events: none;
+	padding-top: 7rem;
 }
 
 .release-hero {
@@ -186,47 +181,6 @@
 	stroke-linejoin: round;
 }
 
-.release-social-actions {
-	grid-column: 1 / -1;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 1rem;
-	width: max-content;
-	margin: 0 auto;
-}
-
-.release-social-action {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 2.75rem;
-	height: 2.75rem;
-	padding: 0;
-	border-radius: 50%;
-	color: rgba(247, 240, 230, 0.72);
-	text-decoration: none;
-	transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-
-.release-social-action svg {
-	width: 1.1rem;
-	height: 1.1rem;
-	flex: 0 0 auto;
-	fill: currentColor;
-}
-
-.release-social-action:hover,
-.release-social-action:focus-visible {
-	background: rgba(255, 179, 25, 0.09);
-	color: #ffb319;
-	transform: translateY(-2px);
-}
-
-.release-social-action:focus-visible {
-	box-shadow: 0 0 0 1px #ffb319;
-}
-
 @media (max-width: 1080px) {
 	.release-hero {
 		grid-template-columns: 1fr;
@@ -252,9 +206,6 @@
 		max-width: none;
 	}
 
-	.release-social-actions {
-		grid-row: 3;
-	}
 }
 
 @media (max-width: 767px) {
@@ -265,7 +216,7 @@
 
 	.home-release-shell .release-hero {
 		min-height: auto;
-		padding-top: 15rem;
+		padding-top: 5.5rem;
 		padding-bottom: 1.25rem;
 	}
 
@@ -287,23 +238,6 @@
 
 	.release-details {
 		grid-row: 2;
-	}
-
-	.release-social-actions {
-		grid-row: 3;
-		gap: 0.65rem;
-		width: max-content;
-		margin-top: 0.15rem;
-	}
-
-	.release-social-action {
-		width: 2.5rem;
-		height: 2.5rem;
-	}
-
-	.release-social-action svg {
-		width: 1rem;
-		height: 1rem;
 	}
 
 	.release-section-heading {
